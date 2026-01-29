@@ -1,0 +1,169 @@
+/* ================================================
+   FOOTER КОМПОНЕНТ (БЭМ)
+   ================================================ */
+
+.footer {
+    background-color: var(--blue-dark);
+    color: var(--light);
+    padding: 100px 0;
+    margin-top: auto;
+}
+
+.footer__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* LOGO */
+.footer__logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__title {
+    margin: 0;
+    font-family: 'Exo2-Bold';
+    font-size: 30px;
+}
+
+.footer__subtitle {
+    margin: 0;
+    font-family: 'Exo2-Light';
+    font-size: 22px;
+}
+
+/* КОНТАКТИ */
+.footer__contacts {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__heading {
+    font-family: 'Exo2-Bold';
+    font-size: 25px;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+}
+
+.footer__contact-item {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.footer__contact-item h5 {
+    font-family: 'Exo2-Bold';
+    font-size: 18px;
+    margin: 0 0 5px 0;
+    font-weight: 700;
+    color: var(--light);
+}
+
+.footer__contact-item p {
+    font-family: 'Exo2-Regular';
+    font-size: 16px;
+    margin: 0;
+    color: white;
+}
+
+/* СОЦІАЛЬНІ МЕРЕЖІ */
+.footer__social {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__social-link {
+    margin-top: 30px;
+    display: inline-block;
+}
+
+.footer__social-link img {
+    width: auto;
+    height: auto;
+}
+
+/* BOTTOM */
+.footer__bottom {
+    text-align: left;
+    margin-top: 40px;
+    font-size: 15px;
+    font-family: 'Exo2-Regular';
+    color: var(--light);
+}
+
+@media (max-width: 768px) {
+
+    .footer {
+        padding: 50px 0;
+        margin-top: auto;
+    }
+
+    .footer__content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .footer__logo {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .footer__title {
+        font-size: 20px;
+    }
+
+    .footer__subtitle {
+        font-size: 15px;
+    }
+
+
+    .footer__heading {
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+
+    .footer__contact-item {
+        margin-top: 20px;
+    }
+
+    .footer__contact-item h5 {
+        font-size: 18px;
+        margin: 0;
+    }
+
+    .footer__contact-item p {
+        font-size: 15px;
+        margin: 5px 0 0 0;
+    }
+
+    .footer__social {
+        display: block;
+        flex-direction: column;
+        margin-top: 15px;
+        font-size: 18px;
+    }
+
+    .footer__social-link {
+        margin-top: 15px;
+        display: inline-block;
+    }
+
+    .footer__social-link img {
+        width: auto;
+        height: auto;
+    }
+
+    .footer__bottom {
+        margin-top: 30px;
+        font-size: 13px;
+    }
+
+    .footer_social_items {
+        gap: 5px;
+    }
+
+}

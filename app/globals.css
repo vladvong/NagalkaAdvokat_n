@@ -1,42 +1,109 @@
+/* ================================================
+   ПЕРЕМЕННЫЕ И ЦВЕТА
+   ================================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* Змінні кольорів для теми */
+    --blue-dark: rgba(16, 32, 45, 1);
+    --light: rgba(204, 208, 207, 1);
+    
+    /* Змінні зображень */
+    --img-hover: url('/images/Hover-image.png');
+    --img-arrow: url('/images/arrow.png');
+    --img-arrow-hover: url('/images/arrow_hover.png');
+    --img-proj: url('/images/Proj.jpg');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ================================================
+   ШРИФТИ
+   ================================================ */
+@font-face {
+    /* Підключення шрифту Exo2-Regular */
+    font-family: 'Exo2-Regular';
+    src: url('/fonts/Exo2-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+@font-face {
+    /* Підключення шрифту Exo2-Bold */
+    font-family: 'Exo2-Bold';
+    src: url('/fonts/Exo2-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-display: swap;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+    /* Підключення шрифту Exo2-Black */
+    font-family: 'Exo2-Black';
+    src: url('/fonts/Exo2-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-display: swap;
 }
 
+@font-face {
+    /* Підключення шрифту Exo2-Light */
+    font-family: 'Exo2-Light';
+    src: url('/fonts/Exo2-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    /* Підключення шрифту Exo2-Extrabold */
+    font-family: 'Exo2-ExtraBold';
+    src: url('/fonts/Exo2-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-display: swap;
+}
+
+/* ================================================
+   ГЛОБАЛЬНІ СТИЛІ
+   ================================================ */
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    /* Скидання відступів і декорацій для всіх елементів */
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.container {
+    /* Контейнер з горизонтальними відступами */
+    padding: 0 280px;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Великі екрани (від 1600px) */
+@media (max-width: 1600px) {
+    .container {
+        padding: 0 100px;
+    }
 }
+
+/* Планшети (до 1200px) */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 90px;
+    }
+}
+
+/* Малі планшети (до 900px) */
+@media (max-width: 900px) {
+    .container {
+        padding: 0 50px;
+    }
+}
+
+/* Мобільні пристрої (до 768px) */
+@media (max-width: 768px) {
+    .container {
+        /* Зменшення відступів на мобільних */
+        padding: 0 20px;
+    }
+}
+
+/* Малі мобільні (до 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
