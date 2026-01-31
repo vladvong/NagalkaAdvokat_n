@@ -56,6 +56,22 @@
     font-display: swap;
 }
 
+@font-face {
+    /* Підключення шрифту Exo2-Medium */
+    font-family: 'Exo2-Medium';
+    src: url('/fonts/Exo2-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    /* Підключення шрифту Exo2-Extralight */
+    font-family: 'Exo2-Extralight';
+    src: url('/fonts/Exo2-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-display: swap;
+}
+
 /* ================================================
    ГЛОБАЛЬНІ СТИЛІ
    ================================================ */
@@ -64,6 +80,14 @@
     padding: 0;
     margin: 0;
     text-decoration: none;
+}
+
+body {
+    font-family: 'Exo2-Regular', Arial, sans-serif;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
