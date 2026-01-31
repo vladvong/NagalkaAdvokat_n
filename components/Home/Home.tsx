@@ -39,6 +39,7 @@ export default function Home() {
     const [formData, setFormData] = useState({ phone: '' });
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState(null);
+    const [showMap, setShowMap] = useState(false);
 
     useEffect(() => {
         // Симуляция загрузки - 2 секунды
@@ -46,6 +47,24 @@ export default function Home() {
             setIsLoaded(true);
         }, 2000);
         return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        const mapContainer = document.getElementById('map-container');
+        if (!mapContainer) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setShowMap(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: '200px' }
+        );
+
+        observer.observe(mapContainer);
+        return () => observer.disconnect();
     }, []);
 
     const handleInputChange = (e) => {
@@ -327,15 +346,21 @@ export default function Home() {
                                 <p>{t('footer.subtitle')}</p>
                             </div>
                         </div>
-                        <div className="kontakts_wrapper_map">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3053.964465633042!2d30.518324276860387!3d50.43904808818426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cefe5aff722d%3A0x6e4e8a54da9e7e78!2z0YPQuy4g0KjQvtGC0LAg0KDRg9GB0YLQsNCy0LXQu9C4LCAxMSwg0JrQuNC10LIsINCj0LrRgNCw0LjQvdCwLCAwMjAwMA!5e1!3m2!1sru!2sde!4v1769123502266!5m2!1sru!2sde"
-                                loading="lazy" 
-                                referrerPolicy="no-referrer-when-downgrade"
-                                style={{ border: 0, width: '100%', height: '100%' }}
-                                allowFullScreen
-                                title="Google Maps"
-                            />
+                        <div className="kontakts_wrapper_map" id="map-container">
+                            {showMap ? (
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3053.964465633042!2d30.518324276860387!3d50.43904808818426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cefe5aff722d%3A0x6e4e8a54da9e7e78!2z0YPQuy4g0KjQvtGC0LAg0KDRg9GB0YLQsNCy0LXQu9C4LCAxMSwg0JrQuNC10LIsINCj0LrRgNCw0LjQvdCwLCAwMjAwMA!5e1!3m2!1sru!2sde!4v1769123502266!5m2!1sru!2sde"
+                                    loading="lazy" 
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    style={{ border: 0, width: '100%', height: '100%' }}
+                                    allowFullScreen
+                                    title="Google Maps"
+                                />
+                            ) : (
+                                <button className="map-placeholder" onClick={() => setShowMap(true)}>
+                                    Завантажити карту
+                                </button>
+                            )}
                         </div>
                     </div>
                     <div className="kontakts_wrapper_feedback">

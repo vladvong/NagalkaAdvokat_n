@@ -719,6 +719,18 @@ details[open] span {
   display: block;
 }
 
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--blue-dark);
+  font-family: 'Exo2-Bold';
+  font-size: 18px;
+  cursor: pointer;
+}
+
 /* ================================================
    CONTACTS FORM
    ================================================ */
@@ -1080,6 +1092,9 @@ details[open] span {
    @media (max-width: 768px)
    ================================================ */
 @media (max-width: 768px) {
+  .reviews {
+    background-attachment: scroll;
+  }
   .hero {
     height: 50vh;
     min-height: 400px;
