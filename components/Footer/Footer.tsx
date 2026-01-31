@@ -34,8 +34,8 @@ function Footer() {
           <div className="footer__social">
             <h4 className="footer__heading">{t('footer.social_heading')}</h4>
             <div className="footer_social_items">
-              <a href="#" className="footer__social-link"><img src={IMAGES.FACEBOOK} alt="Facebook" /></a>
-              <a href="#" className="footer__social-link"><img src={IMAGES.INSTAGRAM} alt="Instagram" /></a>
+              <a href="#" className="footer__social-link"><img src={IMAGES.FACEBOOK} alt="Facebook" width="24" height="24" loading="lazy" decoding="async" /></a>
+              <a href="#" className="footer__social-link"><img src={IMAGES.INSTAGRAM} alt="Instagram" width="24" height="24" loading="lazy" decoding="async" /></a>
             </div>
           </div>
         </div>

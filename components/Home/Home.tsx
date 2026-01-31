@@ -101,7 +101,7 @@ export default function Home() {
     return (
         <main>
             <Preloader isVisible={!isLoaded} />
-            <div className="hero">
+            <div className="hero" role="region" aria-label="Головний екран">
                 <div className="container hero__container">
                     <div className="hero__overlay">
                         <div className="hero__text">
@@ -158,11 +158,18 @@ export default function Home() {
                 </div>
             </div>
             
-            <div className="about" id="about">
+            <div className="about" id="about" role="region" aria-label="Про мене">
                 <div className="container">
                     <div className="about_wrapper">
                         <div className="about_image">
-                            <img src={IMAGES.PHOTO_ABOUT} alt="" />
+                            <img
+                                src={IMAGES.PHOTO_ABOUT}
+                                alt="Фото про адвоката"
+                                width="800"
+                                height="600"
+                                loading="lazy"
+                                decoding="async"
+                            />
                         </div>
                         <div className="about_info_wrapper">
                             <div className="about_info_text">
@@ -177,9 +184,15 @@ export default function Home() {
                             <div className="about_info_subsection">
                                 <h2>{t('home.memberships')}</h2>
                                 <div className="about_info_subsection_list">
-                                    <div><img src={IMAGES.ABOUT_1} alt="" /></div>
-                                    <div><img src={IMAGES.ABOUT_2} alt="" /></div>
-                                    <div><img src={IMAGES.ABOUT_3} alt="" /></div>
+                                    <div>
+                                        <img src={IMAGES.ABOUT_1} alt="Логотип організації 1" width="180" height="180" loading="lazy" decoding="async" />
+                                    </div>
+                                    <div>
+                                        <img src={IMAGES.ABOUT_2} alt="Логотип організації 2" width="180" height="180" loading="lazy" decoding="async" />
+                                    </div>
+                                    <div>
+                                        <img src={IMAGES.ABOUT_3} alt="Логотип організації 3" width="180" height="180" loading="lazy" decoding="async" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +200,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="competencies_wrapper" id="competencies">
+            <div className="competencies_wrapper" id="competencies" role="region" aria-label="Компетенції">
                 <div className="container">
                     <div className="competencies_text">
                         <h2>{t('home.competencies_title')}</h2>
@@ -216,7 +229,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="project" id="projects">
+            <div className="project" id="projects" role="region" aria-label="Проєкти">
                 <div className="container">
                     <div className="project_wrapper">
                         <div className="project_text feature-block">
@@ -229,7 +242,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="reviews">
+            <div className="reviews" role="region" aria-label="Відгуки клієнтів">
                 <div className="container">
                     <div className="reviews_wrapper">
                         <div className="reviews_text feature-block">
@@ -243,7 +256,7 @@ export default function Home() {
                     <div className="reviews_items">
                         <div className="review_card">
                             <div className="review_header">
-                                <img src={IMAGES.PHOTO_ABOUT} alt="Client" className="review_avatar" />
+                                <img src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width="60" height="60" loading="lazy" decoding="async" />
                                 <div className="review_info">
                                     <h4 className="review_name">Іван Петренко</h4>
                                     <div className="review_rating">
@@ -255,7 +268,7 @@ export default function Home() {
                         </div>
                         <div className="review_card">
                             <div className="review_header">
-                                <img src={IMAGES.PHOTO_ABOUT} alt="Client" className="review_avatar" />
+                                <img src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width="60" height="60" loading="lazy" decoding="async" />
                                 <div className="review_info">
                                     <h4 className="review_name">Марія Коваленко</h4>
                                     <div className="review_rating">
@@ -267,7 +280,7 @@ export default function Home() {
                         </div>
                         <div className="review_card">
                             <div className="review_header">
-                                <img src={IMAGES.PHOTO_ABOUT} alt="Client" className="review_avatar" />
+                                <img src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width="60" height="60" loading="lazy" decoding="async" />
                                 <div className="review_info">
                                     <h4 className="review_name">Олег Сидоренко</h4>
                                     <div className="review_rating">
@@ -280,7 +293,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="CollaborationModel">
+            <div className="CollaborationModel" role="region" aria-label="Модель співпраці">
                 <div className="container">
                     <div className="CollaborationModel_text feature-block">
                         <h2 className="feature-block__title">{t('home.collaboration_title')}</h2>
@@ -315,7 +328,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="kontakts" id="kontakt">
+            <div className="kontakts" id="kontakt" role="region" aria-label="Контакти">
                 <div className="container">
                     <div className="kontakts_wrapper_text feature-block">
                         <h2 className="feature-block__title">{t('contact.title')}</h2>
@@ -337,8 +350,8 @@ export default function Home() {
                             <div className="kontakts_wrapper_info-item">
                                 <h3>{t('footer.social_heading')}</h3>
                                 <div className="kontakts_links">
-                                    <a href="#"><img src={IMAGES.INSTAGRAM_KONT} alt="" /></a>
-                                    <a href="#"><img src={IMAGES.FACEBOOK_KONT} alt="" /></a>
+                                    <a href="#"><img src={IMAGES.INSTAGRAM_KONT} alt="Instagram" width="24" height="24" loading="lazy" decoding="async" /></a>
+                                    <a href="#"><img src={IMAGES.FACEBOOK_KONT} alt="Facebook" width="24" height="24" loading="lazy" decoding="async" /></a>
                                 </div>
                             </div>
                             <div className="kontakts_wrapper_info-item last-item">

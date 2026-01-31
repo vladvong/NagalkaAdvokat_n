@@ -43,7 +43,7 @@ export const metadata = {
   },
   robots: "index, follow",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
   },
   alternates: {
     canonical: "https://nagalka-advokat.ua",

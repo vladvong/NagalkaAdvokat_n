@@ -274,7 +274,9 @@
 }
 
 .about_info_subsection_list img {
+  width: 180px;
   height: 180px;
+  object-fit: contain;
 }
 
 /* ================================================
@@ -1185,6 +1187,7 @@ details[open] span {
   }
 
   .about_info_subsection_list img {
+    width: 100px;
     height: 100px;
   }
 
@@ -1322,6 +1325,7 @@ details[open] span {
   }
 
   .about_info_subsection_list img {
+    width: 75px;
     height: 75px;
   }
 
