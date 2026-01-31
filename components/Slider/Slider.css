@@ -7,11 +7,11 @@
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 48px;
+    gap: 16px;
 }
 
 .slider-container {
-    width: 100%;
+    width: 80%;
     overflow: hidden;
     flex: 1;
 }
@@ -21,13 +21,17 @@
 }
 
 .project-card {
-    background: white;
-    border-radius: 8px;
+    position: relative;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    height: 100%;
+    height: 360px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
     display: flex;
     flex-direction: column;
 }
@@ -37,61 +41,79 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.project-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.55) 65%, rgba(0, 0, 0, 0.75) 100%);
+    z-index: 0;
 }
 
 .project-content {
-    padding: 16px;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
+.project-title-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 10px;
+}
+
 .project-title {
     font-family: 'Exo2-Bold';
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
-    color: var(--blue-dark);
-    margin: 0 0 8px 0;
+    color: #fff;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.project-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .project-description {
     font-family: 'Exo2-Regular';
     font-size: 13px;
-    color: #666;
-    margin: 0 0 12px 0;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
     line-height: 1.5;
-    flex: 1;
 }
 
 .project-link {
     display: inline-block;
-    color: var(--blue-dark);
+    color: #fff;
     text-decoration: none;
     font-family: 'Exo2-Bold';
     font-size: 13px;
     font-weight: 700;
     transition: color 0.3s ease;
+    align-self: flex-start;
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .project-link:hover {
-    color: rgba(16, 32, 45, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Custom Slider Arrows */
 .slider-arrow {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 2px solid var(--blue-dark);
+    width: auto;
+    height: auto;
+    border: none;
     background-color: transparent;
     color: var(--blue-dark);
-    font-size: 20px;
-    font-weight: bold;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -100,10 +122,15 @@
     flex-shrink: 0;
 }
 
+.slider-arrow__icon {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
 .slider-arrow:hover:not(.disabled) {
-    background-color: var(--blue-dark);
-    color: white;
-    transform: scale(1.1);
+    color: rgba(16, 32, 45, 0.75);
+    transform: translateX(2px);
 }
 
 .slider-arrow.disabled {
@@ -127,19 +154,15 @@
 /* Responsive */
 @media (max-width: 1024px) {
     .slider-wrapper {
-        gap: 36px;
-    }
-
-    .project-image {
-        height: 180px;
+        gap: 12px;
     }
 
     .project-content {
-        padding: 14px;
+        padding: 16px;
     }
 
     .project-title {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .project-description {
@@ -149,11 +172,7 @@
 
 @media (max-width: 768px) {
     .slider-wrapper {
-        gap: 24px;
-    }
-
-    .project-image {
-        height: 160px;
+        gap: 8px;
     }
 
     .project-content {
@@ -161,7 +180,7 @@
     }
 
     .project-title {
-        font-size: 15px;
+        font-size: 17px;
     }
 
     .project-description {
@@ -169,25 +188,27 @@
     }
 
     .slider-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
+        transform: none;
+    }
+
+    .slider-arrow__icon {
+        width: 24px;
+        height: 24px;
     }
 }
 
 @media (max-width: 480px) {
     .slider-wrapper {
-        gap: 16px;
+        gap: 6px;
     }
 
     .slider-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
+        transform: none;
     }
 
-    .project-image {
-        height: 140px;
+    .slider-arrow__icon {
+        width: 22px;
+        height: 22px;
     }
 
     .project-content {
@@ -195,7 +216,7 @@
     }
 
     .project-title {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .project-description {

@@ -28,10 +28,10 @@ export default function Header() {
                         <nav className={`header__links ${isOpen ? 'header__links--open' : ''}`}>
                             <button className="header__close" onClick={() => setIsOpen(false)}>✕</button>
                             <a href="/" className='header__link' onClick={() => setIsOpen(false)}>{t('header.nav_home')}</a>
-                            <a href="#competencies" className='header__link' onClick={() => setIsOpen(false)}>{t('header.nav_competencies')}</a>
-                            <a href="#projects" className='header__link' onClick={() => setIsOpen(false)}>{t('header.nav_projects')}</a>
+                            <a href="/#competencies" className='header__link' onClick={() => setIsOpen(false)}>{t('header.nav_competencies')}</a>
+                            <a href="/projects" className='header__link' onClick={() => setIsOpen(false)}>{t('header.nav_projects')}</a>
                             <a href="/news" className='header__link' onClick={() => setIsOpen(false)}>{t('header.nav_news')}</a>
-                            <a href="#kontakt" className='header__link' onClick={() => setIsOpen(false)}>{t('header.nav_contacts')}</a>
+                            <a href="/#kontakt" className='header__link' onClick={() => setIsOpen(false)}>{t('header.nav_contacts')}</a>
 
                             {/* Mobile Language Selector */}
                             <div className="header__mobile-lang-block">

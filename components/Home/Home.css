@@ -351,7 +351,7 @@ summary::before {
 }
 
 summary::after {
-  content:url('/assets/images/arrow.png');
+  content: url('/assets/images/arrow.png');
   font-size: 30px;
   margin-left: auto;
 }
@@ -385,15 +385,57 @@ details[open] span {
    ================================================ */
 
 .reviews {
-  margin-top: 80px;
-  padding: 60px 0;
+  margin-top: 150px;
+  padding: 120px 0;
+  background-image: url('/assets/images/reviews.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.reviews::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+.reviews > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.reviews_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  --reviews-col-width: 50%;
+}
+
+.reviews .feature-block h2,
+.reviews .feature-block p {
+  color: #fff;
 }
 
 .reviews_text {
-  margin: 0 auto;
-  text-align: center;
-  max-width: 700px;
-  margin-bottom: 80px;
+  max-width: var(--reviews-col-width);
+  flex: 0 0 var(--reviews-col-width);
+  text-align: left;
+}
+
+.reviews_slide_wrapper{
+  width: 50%;
+}
+.reviews_slider {
+  max-width: var(--reviews-col-width);
+  flex: 0 0 var(--reviews-col-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .reviews_items {
@@ -404,15 +446,10 @@ details[open] span {
 }
 
 .review_card {
-  background-color: var(--light);
+  background-color: #fff;
   padding: 30px;
   border-radius: 15px;
   transition: all 0.3s ease;
-}
-
-.review_card:hover {
-  box-shadow: 0 8px 24px rgba(16, 32, 45, 0.15);
-  transform: translateY(-5px);
 }
 
 .review_header {
@@ -601,6 +638,10 @@ details[open] span {
    COLLABORATION MODEL SECTION
    ================================================ */
 
+.CollaborationModel {
+  margin-top: 80px;
+}
+
 .CollaborationModel_rings_items {
   display: flex;
   align-items: center;
@@ -666,7 +707,7 @@ details[open] span {
 }
 
 .kontakts_wrapper_map {
-  min-height: auto;
+  height: 600px;
   width: 70%;
   align-self: flex-start;
 }
@@ -988,6 +1029,17 @@ details[open] span {
    @media (max-width: 900px)
    ================================================ */
 @media (max-width: 900px) {
+  .reviews_wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    --reviews-col-width: 100%;
+  }
+
+  .reviews_text {
+    text-align: center;
+  }
+
   .about_wrapper {
     flex-direction: column;
     gap: 40px;
@@ -1016,6 +1068,11 @@ details[open] span {
 
   .kontakts_button {
     width: 100%;
+  }
+
+  .kontakts_wrapper_map{
+    width: 100%;
+    height: 300px;
   }
 }
 
@@ -1133,8 +1190,13 @@ details[open] span {
     font-size: 16px;
   }
 
-  .kontakts_wrapper_map iframe {
+  .kontakts_wrapper_map {
+    width: 100%;
     height: 300px;
+  }
+
+  .kontakts_wrapper_map iframe {
+    width: 100%;
     border-radius: 15px;
   }
 
@@ -1183,11 +1245,15 @@ details[open] span {
 
   .reviews_text {
     max-width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
   }
 
   .reviews_items {
     grid-template-columns: 1fr;
+  }
+
+  .reviews_slide_wrapper{
+    width: 100%;
   }
 }
 
@@ -1424,7 +1490,7 @@ details[open] span {
   }
 
   .kontakts_wrapper_map iframe {
-    height: 250px;
+    height: 200px;
     border-radius: 12px;
   }
 

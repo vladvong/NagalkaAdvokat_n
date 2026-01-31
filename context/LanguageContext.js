@@ -27,7 +27,8 @@ export const LanguageProvider = ({ children }) => {
 
   const t = (key) => {
     const keys = key.split('.');
-    let value = translations[language];
+    const safeLanguage = translations[language] ? language : 'uk';
+    let value = translations[safeLanguage];
     
     for (const k of keys) {
       if (value && typeof value === 'object') {

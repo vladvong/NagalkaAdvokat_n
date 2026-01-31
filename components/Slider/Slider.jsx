@@ -6,7 +6,7 @@ import '@splidejs/react-splide/css';
 import { IMAGES } from '@/constants/images';
 import './Slider.css';
 
-function Slider({ children }) {
+function Slider({ children } = {}) {
     const splideRef = useRef(null);
     const [canScrollPrev, setCanScrollPrev] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(true);
@@ -47,8 +47,9 @@ function Slider({ children }) {
     const handleMove = () => {
         if (splideRef.current) {
             const splide = splideRef.current.splide;
-            setCanScrollPrev(!splide.isAtStart());
-            setCanScrollNext(!splide.isAtEnd());
+            const endIndex = splide?.Components?.Controller?.getEnd?.() ?? (splide.length - 1);
+            setCanScrollPrev(splide.index > 0);
+            setCanScrollNext(splide.index < endIndex);
         }
     };
 
@@ -60,7 +61,9 @@ function Slider({ children }) {
                 disabled={!canScrollPrev}
                 aria-label="Попередній слайд"
             >
-                ←
+                <svg className="slider-arrow__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 4L7 12l8 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
             </button>
 
             <Splide
@@ -90,12 +93,18 @@ function Slider({ children }) {
             >
                 {children ? children : projects.map((project) => (
                     <SplideSlide key={project.id} className="splide-slide">
-                        <div className="project-card">
-                            <img src={project.image} alt={project.title} className="project-image" />
+                        <div
+                            className="project-card"
+                            style={{ backgroundImage: `url(${project.image})` }}
+                        >
                             <div className="project-content">
-                                <h3 className="project-title">{project.title}</h3>
-                                <p className="project-description">{project.description}</p>
-                                <a href="#" className="project-link">Читати далі →</a>
+                                <div className="project-title-wrapper">
+                                    <h3 className="project-title">{project.title}</h3>
+                                </div>
+                                <div className="project-bottom">
+                                    <p className="project-description">{project.description}</p>
+                                    <a href="#" className="project-link">Читати далі →</a>
+                                </div>
                             </div>
                         </div>
                     </SplideSlide>
@@ -108,7 +117,9 @@ function Slider({ children }) {
                 disabled={!canScrollNext}
                 aria-label="Наступний слайд"
             >
-                →
+                <svg className="slider-arrow__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
             </button>
         </div>
     );

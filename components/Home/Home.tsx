@@ -6,7 +6,8 @@ import { useLanguage } from '../../context/useLanguage';
 import { IMAGES } from '@/constants/images';
 import Preloader from '../Preloader/Preloader';
 import Slider from '../Slider/Slider';
-
+import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
+    
 // Компонент Counter для анімованого лічення
 const Counter = ({ target, suffix = '', prefix = '', isLoaded }) => {
     const [count, setCount] = useState(0);
@@ -138,7 +139,7 @@ export default function Home() {
                 </div>
             </div>
             
-            <div className="about">
+            <div className="about" id="about">
                 <div className="container">
                     <div className="about_wrapper">
                         <div className="about_image">
@@ -204,47 +205,21 @@ export default function Home() {
                             <p className="feature-block__subtitle">{t('home.projects_subtitle')}</p>
                         </div>
                         <div className="project_slider">
-                            <Slider>
-                                <div className="SplideSlide">
-                                    <div className="SplideSlide_text">
-                                        <img src={IMAGES.PHOTO_ABOUT} alt="Project 1" style={{width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px'}} />
-                                        <h3>Проект 1</h3>
-                                        <p>Опис першого проекту</p>
-                                        <div className="Project_link">
-                                            <a href="#">Читати далі →</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="SplideSlide">
-                                    <div className="SplideSlide_text">
-                                        <img src={IMAGES.PHOTO_ABOUT} alt="Project 2" style={{width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px'}} />
-                                        <h3>Проект 2</h3>
-                                        <p>Опис другого проекту</p>
-                                        <div className="Project_link">
-                                            <a href="#">Читати далі →</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="SplideSlide">
-                                    <div className="SplideSlide_text">
-                                        <img src={IMAGES.PHOTO_ABOUT} alt="Project 3" style={{width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px'}} />
-                                        <h3>Проект 3</h3>
-                                        <p>Опис третього проекту</p>
-                                        <div className="Project_link">
-                                            <a href="#">Читати далі →</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Slider>
+                            <Slider />
                         </div>
                     </div>
                 </div>
             </div>
             <div className="reviews">
                 <div className="container">
-                    <div className="reviews_text feature-block">
-                        <h2 className="feature-block__title">{t('reviews.title')}</h2>
-                        <p className="feature-block__subtitle">{t('reviews.subtitle')}</p>
+                    <div className="reviews_wrapper">
+                        <div className="reviews_text feature-block">
+                            <h2 className="feature-block__title">{t('reviews.title')}</h2>
+                            <p className="feature-block__subtitle">{t('reviews.subtitle')}</p>
+                        </div>
+                        <div className="reviews_slide_wrapper">
+                            <ReviewsSlider />
+                        </div>
                     </div>
                     <div className="reviews_items">
                         <div className="review_card">
