@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from 'react';
+import Image from 'next/image';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { IMAGES } from '@/constants/images';
@@ -88,14 +89,14 @@ function ReviewsSlider() {
                     <SplideSlide key={review.id} className="reviews-slide">
                         <div className="review_card review_card--slider">
                             <div className="review_header">
-                                <img
+                                <Image
                                     src={review.avatar}
                                     alt={review.name}
                                     className="review_avatar"
-                                    width="60"
-                                    height="60"
+                                    width={60}
+                                    height={60}
+                                    sizes="60px"
                                     loading="lazy"
-                                    decoding="async"
                                 />
                                 <div className="review_info">
                                     <h4 className="review_name">{review.name}</h4>

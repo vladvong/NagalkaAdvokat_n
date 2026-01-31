@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import BackToTop from "../components/BackToTop/BackToTop";
 import { LanguageProvider } from "../context/LanguageContext";
 
 const geistSans = Geist({
@@ -28,7 +29,7 @@ export const metadata = {
     siteName: "Nagalka Advokat",
     images: [
       {
-        url: "https://nagalka-advokat.ua/assets/images/Hover-image.png",
+        url: "https://nagalka-advokat.ua/assets/images/Hover-image.webp",
         width: 1200,
         height: 630,
         alt: "Nagalka Advokat",
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <Footer />
+          <BackToTop />
         </LanguageProvider>
       </body>
     </html>

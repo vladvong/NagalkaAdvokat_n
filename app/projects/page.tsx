@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import './Projects.css';
 import { IMAGES } from '@/constants/images';
 import { useLanguage } from '@/context/useLanguage';
@@ -80,8 +81,14 @@ export default function ProjectsPage() {
             <div
               key={project.id}
               className="project-card-item"
-              style={{ backgroundImage: `url(${project.image})` }}
             >
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(max-width: 900px) 100vw, 25vw"
+                className="project-card-item__image"
+              />
               <div className="project-card-overlay" />
               <div className="project-card-content">
                 <h3 className="project-card-title">{project.title}</h3>

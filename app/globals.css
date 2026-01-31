@@ -7,10 +7,10 @@
     --light: rgba(204, 208, 207, 1);
     
     /* Змінні зображень */
-    --img-hover: url('/images/Hover-image.png');
-    --img-arrow: url('/images/arrow.png');
-    --img-arrow-hover: url('/images/arrow_hover.png');
-    --img-proj: url('/images/Proj.jpg');
+    --img-hover: url('/assets/images/Hover-image.webp');
+    --img-arrow: url('/assets/images/arrow.webp');
+    --img-arrow-hover: url('/assets/images/arrow_hover.webp');
+    --img-proj: url('/assets/images/Proj.webp');
 }
 
 /* ================================================

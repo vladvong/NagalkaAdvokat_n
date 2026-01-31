@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import './Footer.css';
 import { useLanguage } from '../../context/useLanguage';
 import { IMAGES } from '@/constants/images';
@@ -34,8 +35,8 @@ function Footer() {
           <div className="footer__social">
             <h4 className="footer__heading">{t('footer.social_heading')}</h4>
             <div className="footer_social_items">
-              <a href="#" className="footer__social-link"><img src={IMAGES.FACEBOOK} alt="Facebook" width="24" height="24" loading="lazy" decoding="async" /></a>
-              <a href="#" className="footer__social-link"><img src={IMAGES.INSTAGRAM} alt="Instagram" width="24" height="24" loading="lazy" decoding="async" /></a>
+              <a href="#" className="footer__social-link"><Image src={IMAGES.FACEBOOK} alt="Facebook" width={24} height={24} sizes="24px" loading="lazy" /></a>
+              <a href="#" className="footer__social-link"><Image src={IMAGES.INSTAGRAM} alt="Instagram" width={24} height={24} sizes="24px" loading="lazy" /></a>
             </div>
           </div>
         </div>

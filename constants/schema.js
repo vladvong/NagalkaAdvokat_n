@@ -7,7 +7,7 @@ export const schemaMarkup = {
   name: 'Nagalka Advokat',
   description: 'Адвокатська контора спеціалізується на рекламному праві',
   url: 'https://nagalka-advokat.ua',
-  image: 'https://nagalka-advokat.ua/assets/images/Hover-image.png',
+  image: 'https://nagalka-advokat.ua/assets/images/Hover-image.webp',
   telephone: '+38 (0XX) XXX-XX-XX',
   email: 'contact@nagalka-advokat.ua',
   address: {

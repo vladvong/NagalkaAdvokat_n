@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from 'react';
+import Image from 'next/image';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { IMAGES } from '@/constants/images';
@@ -93,10 +94,14 @@ function Slider({ children } = {}) {
             >
                 {children ? children : projects.map((project) => (
                     <SplideSlide key={project.id} className="splide-slide">
-                        <div
-                            className="project-card"
-                            style={{ backgroundImage: `url(${project.image})` }}
-                        >
+                        <div className="project-card">
+                            <Image
+                                src={project.image}
+                                alt={project.title}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 33vw"
+                                className="project-card__image"
+                            />
                             <div className="project-content">
                                 <div className="project-title-wrapper">
                                     <h3 className="project-title">{project.title}</h3>

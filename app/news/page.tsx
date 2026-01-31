@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import './News.css';
 import Header from '../../components/Header/Header';
 function News() {
+  const STRAPI_BASE_URL = 'https://determined-desk-f2e043cadd.strapiapp.com';
   const [newsItems, setNewsItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -115,20 +117,30 @@ function News() {
           <>
             <div className="news_grid">
               {newsItems.map((item) => {
-                let imageUrl = null;
-                if (item.image) {
-                  if (item.image.url) {
-                    imageUrl = item.image.url;
-                  }
-                  else if (item.image.formats?.thumbnail?.url) {
-                    imageUrl = item.image.formats.thumbnail.url;
-                  }
-                }
+                const imageMeta = item.image?.formats?.medium
+                  || item.image?.formats?.small
+                  || item.image?.formats?.thumbnail
+                  || item.image
+                  || null;
+                const rawImageUrl = imageMeta?.url ?? null;
+                const imageUrl = rawImageUrl
+                  ? (rawImageUrl.startsWith('http') ? rawImageUrl : `${STRAPI_BASE_URL}${rawImageUrl}`)
+                  : null;
+                const imageWidth = imageMeta?.width ?? 800;
+                const imageHeight = imageMeta?.height ?? 600;
                 
                 return (
                   <div key={item.id} className="news_item">
                     {imageUrl && (
-                      <img src={imageUrl} alt={item.title} className="news_image" loading="lazy" />
+                      <Image
+                        src={imageUrl}
+                        alt={item.title}
+                        className="news_image"
+                        width={imageWidth}
+                        height={imageHeight}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        loading="lazy"
+                      />
                     )}
                     <h3 className="news_item_title">{item.title}</h3>
                     <p className="news_item_subtitle">{item.subtitle}</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import './Home.css';
 import { useLanguage } from '../../context/useLanguage';
 import { IMAGES } from '@/constants/images';
@@ -162,13 +163,13 @@ export default function Home() {
                 <div className="container">
                     <div className="about_wrapper">
                         <div className="about_image">
-                            <img
+                            <Image
                                 src={IMAGES.PHOTO_ABOUT}
                                 alt="Фото про адвоката"
-                                width="800"
-                                height="600"
+                                width={800}
+                                height={600}
+                                sizes="(max-width: 768px) 100vw, 800px"
                                 loading="lazy"
-                                decoding="async"
                             />
                         </div>
                         <div className="about_info_wrapper">
@@ -185,13 +186,13 @@ export default function Home() {
                                 <h2>{t('home.memberships')}</h2>
                                 <div className="about_info_subsection_list">
                                     <div>
-                                        <img src={IMAGES.ABOUT_1} alt="Логотип організації 1" width="180" height="180" loading="lazy" decoding="async" />
+                                        <Image src={IMAGES.ABOUT_1} alt="Логотип організації 1" width={180} height={180} sizes="180px" loading="lazy" />
                                     </div>
                                     <div>
-                                        <img src={IMAGES.ABOUT_2} alt="Логотип організації 2" width="180" height="180" loading="lazy" decoding="async" />
+                                        <Image src={IMAGES.ABOUT_2} alt="Логотип організації 2" width={180} height={180} sizes="180px" loading="lazy" />
                                     </div>
                                     <div>
-                                        <img src={IMAGES.ABOUT_3} alt="Логотип організації 3" width="180" height="180" loading="lazy" decoding="async" />
+                                        <Image src={IMAGES.ABOUT_3} alt="Логотип організації 3" width={180} height={180} sizes="180px" loading="lazy" />
                                     </div>
                                 </div>
                             </div>
@@ -256,7 +257,7 @@ export default function Home() {
                     <div className="reviews_items">
                         <div className="review_card">
                             <div className="review_header">
-                                <img src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width="60" height="60" loading="lazy" decoding="async" />
+                                <Image src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width={60} height={60} sizes="60px" loading="lazy" />
                                 <div className="review_info">
                                     <h4 className="review_name">Іван Петренко</h4>
                                     <div className="review_rating">
@@ -268,7 +269,7 @@ export default function Home() {
                         </div>
                         <div className="review_card">
                             <div className="review_header">
-                                <img src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width="60" height="60" loading="lazy" decoding="async" />
+                                <Image src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width={60} height={60} sizes="60px" loading="lazy" />
                                 <div className="review_info">
                                     <h4 className="review_name">Марія Коваленко</h4>
                                     <div className="review_rating">
@@ -280,7 +281,7 @@ export default function Home() {
                         </div>
                         <div className="review_card">
                             <div className="review_header">
-                                <img src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width="60" height="60" loading="lazy" decoding="async" />
+                                <Image src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width={60} height={60} sizes="60px" loading="lazy" />
                                 <div className="review_info">
                                     <h4 className="review_name">Олег Сидоренко</h4>
                                     <div className="review_rating">
@@ -350,8 +351,8 @@ export default function Home() {
                             <div className="kontakts_wrapper_info-item">
                                 <h3>{t('footer.social_heading')}</h3>
                                 <div className="kontakts_links">
-                                    <a href="#"><img src={IMAGES.INSTAGRAM_KONT} alt="Instagram" width="24" height="24" loading="lazy" decoding="async" /></a>
-                                    <a href="#"><img src={IMAGES.FACEBOOK_KONT} alt="Facebook" width="24" height="24" loading="lazy" decoding="async" /></a>
+                                    <a href="#"><Image src={IMAGES.INSTAGRAM_KONT} alt="Instagram" width={24} height={24} sizes="24px" loading="lazy" /></a>
+                                    <a href="#"><Image src={IMAGES.FACEBOOK_KONT} alt="Facebook" width={24} height={24} sizes="24px" loading="lazy" /></a>
                                 </div>
                             </div>
                             <div className="kontakts_wrapper_info-item last-item">
