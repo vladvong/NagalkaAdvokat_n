@@ -1,13 +1,21 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import './Home.css';
 import { useLanguage } from '../../context/useLanguage';
 import { IMAGES } from '@/constants/images';
 import Preloader from '../Preloader/Preloader';
-import Slider from '../Slider/Slider';
-import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
+const Slider = dynamic(() => import('../Slider/Slider'), {
+    ssr: false,
+    loading: () => <div className="project_slider__placeholder" aria-hidden="true" />,
+});
+
+const ReviewsSlider = dynamic(() => import('../ReviewsSlider/ReviewsSlider'), {
+    ssr: false,
+    loading: () => <div className="reviews_slider__placeholder" aria-hidden="true" />,
+});
     
 // Компонент Counter для анімованого лічення
 const Counter = ({ target, suffix = '', prefix = '', isLoaded }) => {
