@@ -25,7 +25,7 @@ export default function Header() {
                                 <span className="header__logo-subtitle">{t('header.logo_subtitle')}</span>
                             </a>
                         </div>
-   мит                      <nav className={`header__links ${isOpen ? 'header__links--open' : ''}`} aria-label="Головна навігація">
+                       <nav className={`header__links ${isOpen ? 'header__links--open' : ''}`} aria-label="Головна навігація">
                             <button className="header__close" onClick={() => setIsOpen(false)}>✕</button>
                             <a href="/" className='header__link' onClick={() => setIsOpen(false)}>{t('header.nav_home')}</a>
                             <a href="/#competencies" className='header__link' onClick={() => setIsOpen(false)}>{t('header.nav_competencies')}</a>
