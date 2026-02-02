@@ -79,8 +79,8 @@
 }
 
 .footer__social-link img {
-    width: auto;
-    height: auto;
+    width: 40px;
+    height: 40px;
 }
 
 /* BOTTOM */
@@ -146,20 +146,26 @@
         margin-top: 15px;
         font-size: 18px;
     }
+    .footer_social_items {
+        display: flex;
+        gap: 10px;
+    }
 
     .footer__social-link {
         margin-top: 15px;
-        display: inline-block;
+
     }
 
     .footer__social-link img {
-        width: auto;
-        height: auto;
+        width: 30px;
+        height: 30px;
+        
     }
 
     .footer__bottom {
         margin-top: 30px;
         font-size: 13px;
+        
     }
 
     .footer_social_items {
