@@ -131,3 +131,8 @@ body {
     }
 }
 
+
+/* get rrid of next label */
+#__next > div[aria-label="Next.js"] {
+  display: none !important;
+}
