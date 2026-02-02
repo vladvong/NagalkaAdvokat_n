@@ -1,5 +1,3 @@
-"use client";
-
 /* ================================================
    ИЗОБРАЖЕНИЯ И МЕДИА ФАЙЛЫ (из папки /public/assets/images/)
    ================================================ */
@@ -19,6 +17,12 @@ export const IMAGES = {
     
     // Projects
     PROJ: '/assets/images/Proj.webp',
+
+    // News
+    NEWS: '/assets/images/news.png',
+
+    // Default avatar
+    DEFAULT_AVATAR: '/assets/images/default_avatar.webp',
     
     // Footer
     FACEBOOK: '/assets/images/facebook.webp',

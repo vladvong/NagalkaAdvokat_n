@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { IMAGES } from '@/constants/images';
+import Link from 'next/link';
 import './Slider.css';
 
 function Slider({ children } = {}) {
@@ -12,26 +13,61 @@ function Slider({ children } = {}) {
     const [canScrollPrev, setCanScrollPrev] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(true);
 
-    const projects = [
-        {
-            id: 1,
-            title: 'Проєкт 1',
-            description: 'Опис першого проєкту',
-            image: IMAGES.PROJ
-        },
-        {
-            id: 2,
-            title: 'Проєкт 2',
-            description: 'Опис другого проєкту',
-            image: IMAGES.PROJ
-        },
-        {
-            id: 3,
-            title: 'Проєкт 3',
-            description: 'Опис третього проєкту',
-            image: IMAGES.PROJ
-        },
-    ];
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        let mounted = true;
+        const fetchSliderProjects = async () => {
+            const cacheKey = 'slider_projects_v1';
+            const cacheTimeKey = `${cacheKey}_time`;
+            const cacheExpiry = 5 * 60 * 1000; // 5 minutes
+
+            const cachedData = localStorage.getItem(cacheKey);
+            const cachedTime = localStorage.getItem(cacheTimeKey);
+            const now = Date.now();
+
+            if (cachedData && cachedTime && (now - parseInt(cachedTime)) < cacheExpiry) {
+                const data = JSON.parse(cachedData);
+                if (mounted) {
+                    setProjects(data);
+                    setLoading(false);
+                }
+                return;
+            }
+
+            try {
+                const res = await fetch('https://determined-desk-f2e043cadd.strapiapp.com/api/projects?pagination[page]=1&pagination[pageSize]=6&populate=*', {
+                    headers: {
+                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
+                    },
+                });
+                if (!res.ok) throw new Error('Failed to fetch slider projects');
+                const json = await res.json();
+                const items = (json.data || []).map((item) => ({
+                    id: item.id,
+                    documentId: item.documentId ?? item.attributes?.documentId ?? item.id,
+                    title: item.title ?? item.attributes?.title ?? '',
+                    description: item.subtitle ?? item.attributes?.subtitle ?? '',
+                    image: item.image ?? item.attributes?.image ?? null,
+                }));
+                if (mounted) {
+                    setProjects(items);
+                    setLoading(false);
+                }
+                localStorage.setItem(cacheKey, JSON.stringify(items));
+                localStorage.setItem(cacheTimeKey, now.toString());
+            } catch (err) {
+                if (mounted) {
+                    setProjects([]);
+                    setLoading(false);
+                }
+            }
+        };
+
+        fetchSliderProjects();
+        return () => { mounted = false; };
+    }, []);
 
     const handlePrevClick = () => {
         if (splideRef.current) {
@@ -92,28 +128,54 @@ function Slider({ children } = {}) {
                 aria-label="Слайдер проєктів"
                 className="slider-container"
             >
-                {children ? children : projects.map((project) => (
-                    <SplideSlide key={project.id} className="splide-slide">
-                        <div className="project-card">
-                            <Image
-                                src={project.image}
-                                alt={project.title}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 33vw"
-                                className="project-card__image"
-                            />
-                            <div className="project-content">
-                                <div className="project-title-wrapper">
-                                    <h3 className="project-title">{project.title}</h3>
-                                </div>
-                                <div className="project-bottom">
-                                    <p className="project-description">{project.description}</p>
-                                    <a href="#" className="project-link">Читати далі →</a>
+                {children ? children : (loading ? (
+                    [1,2,3].map((i) => (
+                        <SplideSlide key={`ph-${i}`} className="splide-slide">
+                            <div className="project-card project-card--placeholder">
+                                <div className="project-card__image placeholder" />
+                                <div className="project-content">
+                                    <div className="project-title-wrapper">
+                                        <h3 className="project-title">Завантаження...</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </SplideSlide>
-                ))}
+                        </SplideSlide>
+                    ))
+                ) : projects.map((project) => {
+                    const imageMeta = project.image?.formats?.medium
+                      || project.image?.formats?.small
+                      || project.image?.formats?.thumbnail
+                      || project.image
+                      || null;
+                    const rawImageUrl = imageMeta?.url ?? null;
+                    const imageUrl = rawImageUrl
+                      ? (rawImageUrl.startsWith('http') ? rawImageUrl : `https://determined-desk-f2e043cadd.strapiapp.com${rawImageUrl}`)
+                      : IMAGES.PROJ;
+
+                    return (
+                        <SplideSlide key={project.id} className="splide-slide">
+                            <Link href={`/projects/${project.documentId}`} className="project-card-link">
+                                <div className="project-card">
+                                    <Image
+                                        src={imageUrl}
+                                        alt={project.title}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        className="project-card__image"
+                                    />
+                                    <div className="project-content">
+                                        <div className="project-title-wrapper">
+                                            <h3 className="project-title">{project.title}</h3>
+                                        </div>
+                                        <div className="project-bottom">
+                                            <p className="project-description">{project.description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        </SplideSlide>
+                    );
+                }))}
             </Splide>
             
             <button 

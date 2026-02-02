@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import './News.css';
-import Header from '../../components/Header/Header';
+import { IMAGES } from '@/constants/images';
 function News() {
   const STRAPI_BASE_URL = 'https://determined-desk-f2e043cadd.strapiapp.com';
   const [newsItems, setNewsItems] = useState([]);
@@ -37,7 +37,7 @@ function News() {
           `https://determined-desk-f2e043cadd.strapiapp.com/api/news-items?pagination[page]=${currentPage}&pagination[pageSize]=${pageSize}&populate=*`,
           {
             headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_STRAPI_TOKEN}`,
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
             },
           }
         );
@@ -104,7 +104,6 @@ function News() {
 
   return (
     <>
-      <Header />
       <main className="news_main">
         <div className="news_container">
           <h1 className="news_title">Новини</h1>
@@ -125,23 +124,21 @@ function News() {
                 const rawImageUrl = imageMeta?.url ?? null;
                 const imageUrl = rawImageUrl
                   ? (rawImageUrl.startsWith('http') ? rawImageUrl : `${STRAPI_BASE_URL}${rawImageUrl}`)
-                  : null;
+                  : IMAGES.NEWS;
                 const imageWidth = imageMeta?.width ?? 800;
                 const imageHeight = imageMeta?.height ?? 600;
                 
                 return (
                   <div key={item.id} className="news_item">
-                    {imageUrl && (
-                      <Image
-                        src={imageUrl}
-                        alt={item.title}
-                        className="news_image"
-                        width={imageWidth}
-                        height={imageHeight}
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        loading="lazy"
-                      />
-                    )}
+                    <Image
+                      src={imageUrl}
+                      alt={item.title}
+                      className="news_image"
+                      width={imageWidth}
+                      height={imageHeight}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      loading="lazy"
+                    />
                     <h3 className="news_item_title">{item.title}</h3>
                     <p className="news_item_subtitle">{item.subtitle}</p>
                     <p className="news_item_mini">{item.mini_subtitle}</p>

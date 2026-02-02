@@ -76,10 +76,105 @@ export default function Home() {
         return () => observer.disconnect();
     }, []);
 
+    // Fetch competences from Strapi API (no pagination, title + description only)
+    const [competences, setCompetences] = useState([]);
+    const [competencesLoading, setCompetencesLoading] = useState(true);
+
+    useEffect(() => {
+        let mounted = true;
+        const fetchCompetences = async () => {
+            setCompetencesLoading(true);
+            try {
+                const res = await fetch('https://determined-desk-f2e043cadd.strapiapp.com/api/competences?populate=*', {
+                    headers: {
+                        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
+                    },
+                });
+                if (!res.ok) {
+                    if (mounted) setCompetences([]);
+                    if (mounted) setCompetencesLoading(false);
+                    return;
+                }
+                const json = await res.json();
+                const items = (json.data || []).map((item) => ({
+                    id: item.id,
+                    title: item.attributes?.title ?? item.title ?? '',
+                    description: item.attributes?.description ?? item.attributes?.subtitle ?? item.attributes?.body ?? item.description ?? '',
+                }));
+                if (mounted) {
+                    setCompetences(items);
+                    setCompetencesLoading(false);
+                }
+            } catch (err) {
+                if (mounted) setCompetencesLoading(false);
+            }
+        };
+
+        fetchCompetences();
+        return () => { mounted = false; };
+    }, []);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
+
+    const [allReviews, setAllReviews] = useState([]);
+    const [reviewsLoading, setReviewsLoading] = useState(true);
+
+    useEffect(() => {
+        let mounted = true;
+
+        const fetchReviews = async () => {
+            try {
+                const res = await fetch(
+                    'https://determined-desk-f2e043cadd.strapiapp.com/api/reviews?populate=*',
+                    {
+                        headers: {
+                            Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
+                        },
+                    }
+                );
+
+                if (!res.ok) throw new Error('Failed to fetch reviews');
+
+                const json = await res.json();
+
+                const items = (json.data || []).map((item) => {
+                    const imageMeta =
+                        item.image?.formats?.thumbnail || item.image || null;
+                    const imageUrl = imageMeta?.url
+                        ? imageMeta.url.startsWith('http')
+                            ? imageMeta.url
+                            : `https://determined-desk-f2e043cadd.strapiapp.com${imageMeta.url}`
+                        : IMAGES.DEFAULT_AVATAR;
+
+                    return {
+                        id: item.id,
+                        name: item.name || 'Anonymous',
+                        text: item.comment || '',
+                        rating: '★'.repeat(item.rating || 5),
+                        avatar: imageUrl,
+                    };
+                });
+
+                if (mounted) {
+                    setAllReviews(items);  // store ALL reviews here
+                    setReviewsLoading(false);
+                }
+            } catch (err) {
+                if (mounted) {
+                    setAllReviews([]);
+                    setReviewsLoading(false);
+                }
+            }
+        };
+
+        fetchReviews();
+        return () => { mounted = false; };
+    }, []);
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -216,25 +311,29 @@ export default function Home() {
                         <p>{t('home.competencies_subtitle')}</p>
                     </div>
                     <div className="competencies_accordion">
-                        <details>
-                            <summary><span></span>{t('home.competency_1')}</summary>
-                            <div className="details_text">
-                                <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
-                            </div>
-                        </details>
-                        <details>
-                            <summary><span></span>{t('home.competency_2')}</summary>
-                            <div className="details_text">
-                                <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
-                            </div>
-                        </details>
-                        <details>
-                            <summary><span></span>{t('home.competency_3')}</summary>
-                            <div className="details_text">
-                                <p>Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....</p>
-                            </div>
-
-                        </details>
+                        {competencesLoading ? (
+                            [1,2,3].map((i) => (
+                                <details key={`ph-${i}`} className="competency-placeholder">
+                                    <summary><span></span>{t('home.loading')}</summary>
+                                    <div className="details_text">
+                                        <p>...</p>
+                                    </div>
+                                </details>
+                            ))
+                        ) : (
+                            (competences.length > 0 ? competences : [
+                                { title: t('home.competency_1'), description: 'Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.' },
+                                { title: t('home.competency_2'), description: 'Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.' },
+                                { title: t('home.competency_3'), description: 'Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....' },
+                            ]).map((item, idx) => (
+                                <details key={item.id ?? idx}>
+                                    <summary><span></span>{item.title}</summary>
+                                    <div className="details_text">
+                                        <p>{item.description}</p>
+                                    </div>
+                                </details>
+                            ))
+                        )}
                     </div>
                 </div>
             </div>
@@ -259,46 +358,36 @@ export default function Home() {
                             <p className="feature-block__subtitle">{t('reviews.subtitle')}</p>
                         </div>
                         <div className="reviews_slide_wrapper">
-                            <ReviewsSlider />
+                            <ReviewsSlider reviews={allReviews} loading={reviewsLoading} />
                         </div>
                     </div>
                     <div className="reviews_items">
-                        <div className="review_card">
-                            <div className="review_header">
-                                <Image src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width={60} height={60} sizes="60px" loading="lazy" />
-                                <div className="review_info">
-                                    <h4 className="review_name">Іван Петренко</h4>
-                                    <div className="review_rating">
-                                        <span>★★★★★</span>
+                        {reviewsLoading ? (
+                            <p>Завантаження відгуків...</p>
+                        ) : (
+                            allReviews.slice(0, 3).map((review) => (
+                                <div key={review.id} className="review_card">
+                                    <div className="review_header">
+                                        <Image
+                                            src={review.avatar}
+                                            alt={review.name}
+                                            className="review_avatar"
+                                            width={60}
+                                            height={60}
+                                            sizes="60px"
+                                            loading="lazy"
+                                        />
+                                        <div className="review_info">
+                                            <h4 className="review_name">{review.name}</h4>
+                                            <div className="review_rating">
+                                                <span>{review.rating}</span>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <p className="review_text">{review.text}</p>
                                 </div>
-                            </div>
-                            <p className="review_text">Чудовий адвокат! Допоміг мені розібратися з усіма складностями справи. Дуже професійний підхід.</p>
-                        </div>
-                        <div className="review_card">
-                            <div className="review_header">
-                                <Image src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width={60} height={60} sizes="60px" loading="lazy" />
-                                <div className="review_info">
-                                    <h4 className="review_name">Марія Коваленко</h4>
-                                    <div className="review_rating">
-                                        <span>★★★★★</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p className="review_text">Дуже задоволена результатом. Ярослав забезпечив мені найкращий результат у справі.</p>
-                        </div>
-                        <div className="review_card">
-                            <div className="review_header">
-                                <Image src={IMAGES.PHOTO_ABOUT} alt="Клієнт" className="review_avatar" width={60} height={60} sizes="60px" loading="lazy" />
-                                <div className="review_info">
-                                    <h4 className="review_name">Олег Сидоренко</h4>
-                                    <div className="review_rating">
-                                        <span>★★★★★</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p className="review_text">Рекомендую всім! Адвокат знає своє діло і завжди готов допомогти.</p>
-                        </div>
+                            ))
+                        )}
                     </div>
                 </div>
             </div>

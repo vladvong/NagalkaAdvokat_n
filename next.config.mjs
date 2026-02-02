@@ -9,6 +9,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'determined-desk-f2e043cadd.strapiapp.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'determined-desk-f2e043cadd.media.strapiapp.com',
+      },
     ],
   },
   trailingSlash: true,
