@@ -35,8 +35,27 @@ function Footer() {
           <div className="footer__social">
             <h4 className="footer__heading">{t('footer.social_heading')}</h4>
             <div className="footer_social_items">
-              <a href="#" className="footer__social-link"><Image src={IMAGES.FACEBOOK} alt="Facebook" width={24} height={24} sizes="24px" loading="lazy" /></a>
-              <a href="#" className="footer__social-link"><Image src={IMAGES.INSTAGRAM} alt="Instagram" width={24} height={24} sizes="24px" loading="lazy" /></a>
+              <div className="footer__social-link">
+                <a href="https://www.facebook.com/aroslav.nagalka.2025?locale=uk_UA ">
+                  <Image className="footer__social-icon" src={IMAGES.FACEBOOK} alt="Facebook" width={24} height={24} sizes="24px" loading="lazy" />
+                </a>
+              </div>
+              <div className="footer__social-link">
+                <a href="https://www.instagram.com/_yaroslav_yaroslavovich?igsh=OXp1N2oyeTVwenQy&utm_source=qr">
+                  <Image className="footer__social-icon" src={IMAGES.INSTAGRAM} alt="Instagram" width={24} height={24} sizes="24px" loading="lazy" />
+                </a>
+              </div>
+              <div className="footer__social-link">
+                <a href="https://www.linkedin.com/in/yaroslav-nahalka-061b8a337/">
+                  <Image className="footer__social-icon" src={IMAGES.LINKEDIN} alt="LinkedIn" width={24} height={24} sizes="24px" loading="lazy" />
+                </a>
+              </div>
+              <div className="footer__social-link">
+                <a href="https://www.linkedin.com/in/yaroslav-nahalka-061b8a337/">
+                  <Image className="footer__social-icon" src={IMAGES.YOUTUBE} alt="YouTube" width={24} height={24} sizes="24px" loading="lazy" />
+                </a>
+              </div>
+
             </div>
           </div>
         </div>

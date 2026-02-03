@@ -27,6 +27,8 @@ export const IMAGES = {
     // Footer
     FACEBOOK: '/assets/images/facebook.webp',
     INSTAGRAM: '/assets/images/instagram.webp',
+    LINKEDIN: '/assets/images/mdi_linkedin.png',
+    YOUTUBE: '/assets/images/youtube.png',
     
     // Arrows
     ARROW: '/assets/images/arrow.webp',

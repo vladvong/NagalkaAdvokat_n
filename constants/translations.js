@@ -10,7 +10,7 @@ const translations = {
       nav_news: 'Новини',
       nav_contacts: 'Контакти',
       hero_title: 'Де стратегія — там перемога',
-      hero_subtitle: 'Юридична стратегія, що дає конкурентну перевагу',
+      hero_subtitle: 'Юридична позиція, що дає конкурентну перевагу',
       stat_experience: 'років досвіду роботи',
       stat_deals: 'закритих угод',
       stat_victories: 'судових перемог',

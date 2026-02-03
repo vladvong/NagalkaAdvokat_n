@@ -124,9 +124,8 @@
 
 .stats {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 100px;
   flex-wrap: wrap;
   width: 100%;
   margin-top: 0;
@@ -136,9 +135,6 @@
 
 .stat {
   text-align: center;
-  flex: 1;
-  min-width: 120px;
-  padding: 15px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -660,12 +656,24 @@ details[open] span {
 .CollaborationModel {
   margin-top: 80px;
 }
+.CollaborationModel_text{
+  padding: 70px 0;
+}
+
+.CollaborationModel_rings_wrapper {
+  background-image: url('/assets/images/CollaborationModel.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 40px 0;
+}
 
 .CollaborationModel_rings_items {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  gap: 0;
   height: 500px;
   margin: 50px auto;
   z-index: 99;
@@ -679,6 +687,11 @@ details[open] span {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+.CollaborationModel_rings_item:not(:first-child) {
+  margin-left: -15px;
 }
 
 .ring {
@@ -692,9 +705,9 @@ details[open] span {
   justify-content: center;
   text-align: center;
   font-weight: bold;
-  color: var(--blue-dark);
+  color: var(--light);
   font-family: 'Exo2-Extrabold';
-  border: 1px dashed var(--blue-dark);
+  border: 1px dashed var(--light);
   gap: 40px;
   font-size: 20px;
   text-transform: uppercase;
@@ -704,7 +717,7 @@ details[open] span {
   margin-top: 50px;
   font-family: 'Exo2-Medium';
   font-size: 20px;
-  color: var(--blue-dark);
+  color: var(--light);
   max-width: 220px;
 
 }
@@ -712,6 +725,9 @@ details[open] span {
 /* ================================================
    CONTACTS SECTION
    ================================================ */
+.kontakts {
+  margin-top: 150px;
+}
 
 .kontakts_wrapper {
   padding: 75px 0 0 0;
@@ -956,6 +972,7 @@ details[open] span {
 
   .CollaborationModel_rings_item {
     width: 280px;
+    margin-left: 0;
   }
 
   .ring {
@@ -1034,6 +1051,7 @@ details[open] span {
 
   .CollaborationModel_rings_items {
     gap: 40px;
+    justify-content: center;
   }
 
   .kontakts_wrapper {
@@ -1122,6 +1140,11 @@ details[open] span {
    ================================================ */
   @media (max-width: 768px) {
     .reviews {
+      background-attachment: scroll;
+    }
+
+    .CollaborationModel_rings_wrapper {
+      margin-top: 50px;
       background-attachment: scroll;
     }
 
@@ -1458,6 +1481,10 @@ details[open] span {
       justify-content: center;
       align-items: center;
       width: 100%;
+    }
+
+    .CollaborationModel_rings_item:not(:first-child) {
+      margin-left: 0;
     }
 
     .ring {

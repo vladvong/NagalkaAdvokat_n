@@ -460,7 +460,7 @@ export default function Home() {
                         <div className="kontakts_wrapper_map" id="map-container">
                             {showMap ? (
                                 <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3053.964465633042!2d30.518324276860387!3d50.43904808818426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cefe5aff722d%3A0x6e4e8a54da9e7e78!2z0YPQuy4g0KjQvtGC0LAg0KDRg9GB0YLQsNCy0LXQu9C4LCAxMSwg0JrQuNC10LIsINCj0LrRgNCw0LjQvdCwLCAwMjAwMA!5e1!3m2!1sru!2sde!4v1769123502266!5m2!1sru!2sde"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5082.2207529704265!2d30.520899200000006!3d50.4390447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cefe5aff722d%3A0x6e4e8a54da9e7e78!2z0LLRg9C70LjRhtGPINCo0L7RgtCwINCg0YPRgdGC0LDQstC10LvRliwgMTEsINCa0LjRl9CyLCDQo9C60YDQsNGX0L3QsCwgMDIwMDA!5e0!3m2!1suk!2sde!4v1770157321367!5m2!1suk!2sde"
                                     loading="lazy" 
                                     referrerPolicy="no-referrer-when-downgrade"
                                     style={{ border: 0, width: '100%', height: '100%' }}
