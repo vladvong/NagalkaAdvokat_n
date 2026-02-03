@@ -34,14 +34,13 @@ function News() {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://determined-desk-f2e043cadd.strapiapp.com/api/news-items?pagination[page]=${currentPage}&pagination[pageSize]=${pageSize}&populate=*`,
+          `${STRAPI_BASE_URL}/api/news-items?sort=createdAt:desc&pagination[page]=${currentPage}&pagination[pageSize]=${pageSize}&populate=*`,
           {
             headers: {
               Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
             },
           }
         );
-
 
         if (!response.ok) {
           throw new Error('Failed to fetch news');

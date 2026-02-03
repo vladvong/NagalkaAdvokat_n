@@ -37,7 +37,7 @@ function Slider({ children } = {}) {
             }
 
             try {
-                const res = await fetch('https://determined-desk-f2e043cadd.strapiapp.com/api/projects?pagination[page]=1&pagination[pageSize]=6&populate=*', {
+                const res = await fetch('https://determined-desk-f2e043cadd.strapiapp.com/api/projects?sort=createdAt:desc&pagination[page]=1&pagination[pageSize]=6&populate=*', {
                     headers: {
                         Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
                     },

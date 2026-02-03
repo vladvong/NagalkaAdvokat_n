@@ -85,7 +85,7 @@ export default function Home() {
         const fetchCompetences = async () => {
             setCompetencesLoading(true);
             try {
-                const res = await fetch('https://determined-desk-f2e043cadd.strapiapp.com/api/competences?populate=*', {
+                const res = await fetch('https://determined-desk-f2e043cadd.strapiapp.com/api/competences?sort=createdAt:desc&populate=*', {
                     headers: {
                         Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
                     },
@@ -128,7 +128,7 @@ export default function Home() {
         const fetchReviews = async () => {
             try {
                 const res = await fetch(
-                    'https://determined-desk-f2e043cadd.strapiapp.com/api/reviews?populate=*',
+                    'https://determined-desk-f2e043cadd.strapiapp.com/api/reviews?sort=createdAt:desc&populate=*',
                     {
                         headers: {
                             Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,

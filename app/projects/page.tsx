@@ -39,7 +39,7 @@ export default function ProjectsPage() {
       try {
         setLoading(true);
         const response = await fetch(
-          `${STRAPI_BASE_URL}/api/projects?pagination[page]=${currentPage}&pagination[pageSize]=${pageSize}&populate=*`,
+          `${STRAPI_BASE_URL}/api/projects?sort=createdAt:desc&pagination[page]=${currentPage}&pagination[pageSize]=${pageSize}&populate=*`,
           {
             headers: {
               Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
