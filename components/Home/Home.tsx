@@ -96,11 +96,22 @@ export default function Home() {
                     return;
                 }
                 const json = await res.json();
-                const items = (json.data || []).map((item) => ({
+                const items = (json.data || []).map((item) => {
+
+                const listItems: string[] = [];
+                for (let i = 1; i <= 10; i++) {
+                    const key = `listItem${i}`;
+                    if (item[key]) listItems.push(item[key]);
+                }
+
+                return {
                     id: item.id,
-                    title: item.attributes?.title ?? item.title ?? '',
-                    description: item.attributes?.description ?? item.attributes?.subtitle ?? item.attributes?.body ?? item.description ?? '',
-                }));
+                    title: item.title || '',
+                    description: item.description || '',
+                    listItems,
+                };
+                });
+
                 if (mounted) {
                     setCompetences(items);
                     setCompetencesLoading(false);
@@ -311,29 +322,29 @@ export default function Home() {
                         <p>{t('home.competencies_subtitle')}</p>
                     </div>
                     <div className="competencies_accordion">
-                        {competencesLoading ? (
-                            [1,2,3].map((i) => (
-                                <details key={`ph-${i}`} className="competency-placeholder">
-                                    <summary><span></span>{t('home.loading')}</summary>
-                                    <div className="details_text">
-                                        <p>...</p>
-                                    </div>
-                                </details>
-                            ))
-                        ) : (
-                            (competences.length > 0 ? competences : [
-                                { title: t('home.competency_1'), description: 'Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.' },
-                                { title: t('home.competency_2'), description: 'Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.' },
-                                { title: t('home.competency_3'), description: 'Бла бла....Бла бла....Бла бла....Бла бла....Бла бла....' },
-                            ]).map((item, idx) => (
-                                <details key={item.id ?? idx}>
-                                    <summary><span></span>{item.title}</summary>
-                                    <div className="details_text">
-                                        <p>{item.description}</p>
-                                    </div>
-                                </details>
-                            ))
-                        )}
+                    {competencesLoading ? (
+                        <p>Loading competences...</p>
+                    ) : (
+                        competences.map((item) => (
+                        <details key={item.id} className="competency-item">
+                            <summary className="competency-title">{item.title}</summary>
+                            <div className="competency-content">
+                            {item.listItems.length > 0 && (
+                                <ul className="competency-list">
+                                {item.listItems.map((li, idx) => (
+                                    <li key={idx} className="competency-list-item">{li}</li>
+                                ))}
+                                </ul>
+                            )}
+                            {item.description && (
+                                <p className="competency-description">
+                                Для кого: {item.description}
+                                </p>
+                            )}
+                            </div>
+                        </details>
+                        ))
+                    )}
                     </div>
                 </div>
             </div>

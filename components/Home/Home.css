@@ -1623,3 +1623,43 @@ details[open] span {
       font-size: 15px;
     }
   }
+
+
+  /* Competences */
+
+  /* Each competence detail */
+.competency-item {
+  margin-bottom: 1.5rem;
+}
+
+/* Summary / title of competence */
+.competency-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+/* Container for list + description */
+.competency-content {
+  padding-left: 1.5rem; /* indent the content */
+  margin-top: 0.5rem;
+}
+
+/* List styling */
+.competency-list {
+  list-style-type: disc;
+  margin: 0 0 1rem 1.5rem; /* bottom margin to separate from description */
+  padding: 0;
+}
+
+.competency-list-item {
+  margin-bottom: 0.5rem; /* space between list items */
+}
+
+/* Description paragraph */
+.competency-description {
+  margin-top: 1rem; /* separates from list */
+  font-style: italic;
+  color: #333;
+}
