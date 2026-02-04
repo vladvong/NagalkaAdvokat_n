@@ -15,7 +15,7 @@
     overflow: visible;
     flex: 1;
     padding: 10px 0 !important;
-    background: none;
+    background: none !important;
 }
 
 .slider-container .splide__track {
@@ -40,7 +40,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     height: 320px;
-    color: white;
+    color: var(--light);
     display: flex;
     flex-direction: column;
     z-index: 0;
@@ -75,43 +75,76 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    gap: 12px;
 }
 
 .project-title-wrapper {
-    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
 }
 
 .project-title {
     font-family: 'Exo2-Bold';
     font-size: 20px;
     font-weight: 700;
-    color: #fff;
+    color: var(--light, #ccd0cf);
     margin: 0;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .project-bottom {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    align-items: flex-start;
 }
 
 .project-description {
     font-family: 'Exo2-Regular';
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+    color: var(--light, #ccd0cf);
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.4;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-card-button {
+    margin-top: 6px;
+    display: inline-block;
+    color: var(--light, #ccd0cf);
+    text-decoration: none;
+    font-family: 'Exo2-Bold';
+    font-size: 15px;
+    border: 1px solid var(--light, #ccd0cf);
+    border-radius: 5px;
+    padding: 8px 14px;
+    width: fit-content;
+    background: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    align-self: flex-start;
+}
+
+.project-card-button:hover {
+    background: #fff;
+    color: var(--blue-dark);
 }
 
 .project-link {
     display: inline-block;
-    color: #fff;
+    color: var(--light);
     text-decoration: none;
     font-family: 'Exo2-Bold';
     font-size: 13px;
@@ -119,11 +152,11 @@
     transition: color 0.3s ease;
     align-self: flex-start;
     padding-bottom: 2px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid var(--light);
 }
 
 .project-link:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--light);
 }
 
 /* Custom Slider Arrows */
@@ -148,7 +181,7 @@
 }
 
 .slider-arrow:hover:not(.disabled) {
-    color: rgba(16, 32, 45, 0.75);
+    color: var(--blue-dark);
     transform: translateX(2px);
 }
 

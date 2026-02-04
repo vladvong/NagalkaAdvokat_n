@@ -27,7 +27,7 @@ const translations = {
       email_label: 'Email:',
       email: 'yaroslavnahalka@gmail.com',
       phone_label: 'Телефон:',
-      phone: '+38 (098) 881-74-66',
+      phone: '+38(098) 881-74-66',
       social_heading: 'Соціальні мережі:',
       copyright: '© 2026 Ярослав Нагалка. Всі права захищені.',
     },
@@ -37,6 +37,9 @@ const translations = {
       about_subtitle: 'адвокат',
       about_description: 'Понад 8 років я захищаю інтереси фізичних осіб та бізнесу в судах, переговорах та адміністративних процедурах, поєднуючи процесуальну тактику зі стратегічним баченням. Моя практика охоплює спори будь-якої складності, кримінальні провадження, податкові перевірки. Я будую комплексні рішення, які зменшують ризики, посилюють позицію бізнесу та підтримують зростання його прибутковості.',
       memberships: 'Членство в організаціях',
+      memberships_list: [
+        'Національна асоціація адвокатів України',
+      ],
       competencies_title: 'Компетенції',
       competencies_subtitle: 'Ключові напрями моєї практики, у яких я допомагаю клієнтам у спорах, арбітражі та складних правових проєктах. Оберіть сферу, щоб дізнатися більше.',
       competency_1: 'Вирішення спорів у суді',
@@ -56,7 +59,7 @@ const translations = {
     // Reviews
     reviews: {
       title: 'Сотні правових рішень для компаній, що цінують результат',
-      subtitle: 'Думаємо над текстом, Думаємо над текстом, Думаємо над текстом, Думаємо над текстом,',
+      subtitle: 'Сотні успішних кейсів для компаній, що знають ціну рішень',
     },
     // News page
     news: {
@@ -107,49 +110,57 @@ const translations = {
       nav_projects: 'Projects',
       nav_news: 'News',
       nav_contacts: 'Contacts',
-      hero_title: 'Where Strategy Meets Victory',
-      hero_subtitle: 'Legal strategy that gives competitive advantage',
-      stat_experience: 'years of work experience',
+      hero_title: 'Where strategy wins',
+      hero_subtitle: 'A legal position that gives you an edge',
+      stat_experience: 'years of experience',
       stat_deals: 'closed deals',
-      stat_victories: 'courtroom victories',
-      stat_recovered: 'debt collected in court',
-      stat_cancelled: 'sum of cancelled regulatory acts',
+      stat_victories: 'court victories',
+      stat_recovered: 'debt recovered in court',
+      stat_cancelled: 'amount of canceled tax notices',
     },
     // Footer
     footer: {
       title: 'Yaroslav Nagalka',
-      subtitle: 'Lawyer',
+      subtitle: 'lawyer',
       contacts_heading: 'Contacts',
       address_label: 'Address:',
-      address: 'Kyiv, Shota Rustaveli St. 11, Kyiv, 01001',
+      address: 'Kyiv, 11 Shota Rustaveli St., 01001',
       email_label: 'Email:',
       email: 'yaroslavnahalka@gmail.com',
       phone_label: 'Phone:',
       phone: '+38 (098) 881-74-66',
-      social_heading: 'Social networks:',
+      social_heading: 'Social media:',
       copyright: '© 2026 Yaroslav Nagalka. All rights reserved.',
     },
     // Home page
     home: {
       about_title: 'Yaroslav Nagalka',
       about_subtitle: 'lawyer',
-      about_description: 'For over 8 years, I have protected the interests of individuals and businesses in courts, negotiations and administrative procedures, combining procedural tactics with strategic vision. My practice covers disputes of any complexity, criminal proceedings, and tax audits. I build comprehensive solutions that reduce risks, strengthen business position and support revenue growth.',
-      memberships: 'Memberships',
+      about_description: 'For over 8 years I have defended individuals and businesses in courts, negotiations, and administrative proceedings, combining procedural tactics with strategic vision. My practice covers disputes of any complexity, criminal cases, and tax audits. I build integrated solutions that lower risk, strengthen a company’s position, and support profitable growth.',
+      memberships: 'Memberships in organizations',
+      memberships_list: [
+        'National Association of Advocates of Ukraine',
+      ],
       competencies_title: 'Competencies',
-      competencies_subtitle: 'Key areas of my practice where I help clients with disputes, arbitration and complex legal projects. Select an area to learn more.',
-      competency_1: 'Dispute Resolution in Court',
+      competencies_subtitle: 'Key areas of my practice where I help clients with disputes, arbitration, and complex legal projects. Choose a field to learn more.',
+      competency_1: 'Dispute resolution in court',
       competency_2: 'Corporate Law/M&A',
-      competency_3: 'Taxes and Consulting',
+      competency_3: 'Taxes and consulting',
       projects_title: 'Projects',
-      projects_subtitle: 'A growing collection of projects from practice in which clients are represented who managed to help. Learn more about my experience.',
+      projects_subtitle: 'A growing set of matters where I have helped clients succeed. See more of my experience.',
       collaboration_title: 'Collaboration Model',
       collaboration_subtitle: 'How I work with clients',
       step_1_title: 'Request and Legal Analysis',
-      step_1_text: 'I analyze the facts, identify risks and goals',
+      step_1_text: 'I review the facts, define the goal, and map the risks',
       step_2_title: 'Strategy and Action Plan',
-      step_2_text: 'I develop a comprehensive strategy for problem solving',
+      step_2_text: 'I prepare a comprehensive strategy and action plan',
       step_3_title: 'Implementation and Communication',
-      step_3_text: 'I perform all necessary actions and keep you informed',
+      step_3_text: 'I execute, communicate transparently, and adjust as needed',
+    },
+    // Reviews
+    reviews: {
+      title: 'Hundreds of legal solutions for result-driven companies',
+      subtitle: 'Hundreds of successful cases for companies that value decisive action',
     },
     // News page
     news: {
@@ -162,13 +173,13 @@ const translations = {
     // Project page
     project: {
       title: 'Projects',
-      description: 'My successful legal projects and cases',
+      description: 'Successful legal matters and case work',
     },
     // Contact page
     contact: {
       title: 'Contacts',
       feedback_title: 'Send me a message',
-      feedback_description: 'Send me your message and I will respond as soon as possible',
+      feedback_description: 'Send your message and I will reply as soon as possible',
       phone_label: 'Phone:',
       email_label: 'Email:',
       address_label: 'Address:',
@@ -183,8 +194,8 @@ const translations = {
     // 404 page
     notFound: {
       title: 'Page Not Found',
-      description: 'Unfortunately, the page you are looking for does not exist or has been deleted.',
-      button: 'Back to Home',
+      description: 'The page you are looking for does not exist or has been removed.',
+      button: 'Back to home',
       link_home: 'Home',
       link_news: 'News',
       link_contacts: 'Contacts',

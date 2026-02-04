@@ -91,7 +91,7 @@ function News() {
       <main className="news_main">
         <div className="container">
           <h1 className="news_title">Новини</h1>
-          <p>Завантаження новин...</p>
+          <p className="news_description">Завантаження новин...</p>
         </div>
       </main>
     );
@@ -102,7 +102,7 @@ function News() {
       <main className="news_main">
         <div className="container">
           <h1 className="news_title">Новини</h1>
-          <p>Помилка при завантаженні новин: {error}</p>
+          <p className="news_description">Помилка при завантаженні новин: {error}</p>
         </div>
       </main>
     );

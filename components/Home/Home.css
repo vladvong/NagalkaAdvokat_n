@@ -270,7 +270,11 @@
   align-items: center;
   justify-content: left;
 }
-
+.about_info_subsection_item{
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Exo2-regular';
+}
 .about_info_subsection_list img {
   width: 180px;
   height: 180px;
@@ -850,6 +854,19 @@ details[open] span {
 
 .kontakts_links {
   margin-top: 20px;
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+
+.kontakts_links a{
+  width: 40px;
+  height: 40px;
+}
+
+.kontakts_links a > img {
+  width: 100%;
+  height: 40px;
 }
 
 .form_message {
@@ -1239,12 +1256,14 @@ details[open] span {
     .about_info_subsection_list {
       gap: 15px;
     }
-
+    
     .about_info_subsection_list img {
       width: 100px;
       height: 100px;
     }
-
+    .about_info_subsection_item{
+      font-size: 13px;
+    }
     .kontakts_wrapper {
       gap: 25px;
       padding: 50px 0;

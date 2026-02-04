@@ -160,7 +160,7 @@
     }
     .footer_social_items {
         display: flex;
-        gap: 10px;
+        gap: 10px !important
     }
 
     .footer__social-link {
@@ -169,18 +169,14 @@
     }
 
     .footer__social-icon {
-        width: 24px;
-        height: 24px;
+        width: 35px;
+        height: 35px;
     }
 
     .footer__bottom {
         margin-top: 30px;
         font-size: 13px;
         
-    }
-
-    .footer_social_items {
-        gap: 5px;
     }
 
 }

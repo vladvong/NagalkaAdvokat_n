@@ -8,7 +8,7 @@ export const IMAGES = {
     REVIEWS_BG: '/assets/images/reviews.webp',
     
     // Home Page
-    PHOTO_ABOUT: '/assets/images/PhotoAbout.webp',
+    PHOTO_ABOUT: '/assets/images/PhotoAbout.jpg',
     ABOUT_1: '/assets/images/about_1.webp',
     ABOUT_2: '/assets/images/about_2.webp',
     ABOUT_3: '/assets/images/about_3.webp',
@@ -20,6 +20,7 @@ export const IMAGES = {
 
     // News
     NEWS: '/assets/images/news.png',
+    NEWS_AUTHOR: '/assets/images/news_author.png',
 
     // Default avatar
     DEFAULT_AVATAR: '/assets/images/default_avatar.webp',
@@ -29,6 +30,8 @@ export const IMAGES = {
     INSTAGRAM: '/assets/images/instagram.webp',
     LINKEDIN: '/assets/images/mdi_linkedin.png',
     YOUTUBE: '/assets/images/youtube.png',
+    LINKEDIN_DARK: '/assets/images/linkedin_dark.png',
+    YOUTUBE_DARK: '/assets/images/youtube_dark.png',
     
     // Arrows
     ARROW: '/assets/images/arrow.webp',

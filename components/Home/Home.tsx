@@ -299,11 +299,13 @@ export default function Home() {
                             <div className="about_info_subsection">
                                 <h2>{t('home.memberships')}</h2>
                                 <div className="about_info_subsection_list">
-                                    <div>
+                                    <div className='about_info_subsection_item'>
                                         <Image src={IMAGES.ABOUT_1} alt="Логотип організації 1" width={180} height={180} sizes="180px" loading="lazy" />
-                                    </div>
-                                    <div>
+                                        <p>{t('home.memberships')}</p>
+                                   </div>
+                                    <div className='about_info_subsection_item'>
                                         <Image src={IMAGES.ABOUT_2} alt="Логотип організації 2" width={180} height={180} sizes="180px" loading="lazy" />
+                                        <p>{t('home.memberships_list')}</p>
                                     </div>
                                     <div>
                                         <Image src={IMAGES.ABOUT_3} alt="Логотип організації 3" width={180} height={180} sizes="180px" loading="lazy" />
@@ -461,6 +463,8 @@ export default function Home() {
                                 <div className="kontakts_links">
                                     <a href="#"><Image src={IMAGES.INSTAGRAM_KONT} alt="Instagram" width={24} height={24} sizes="24px" loading="lazy" /></a>
                                     <a href="#"><Image src={IMAGES.FACEBOOK_KONT} alt="Facebook" width={24} height={24} sizes="24px" loading="lazy" /></a>
+                                    <a href="#"><Image src={IMAGES.LINKEDIN_DARK} alt="Instagram" width={24} height={24} sizes="24px" loading="lazy" /></a>
+                                    <a href="#"><Image src={IMAGES.YOUTUBE_DARK} alt="Facebook" width={24} height={24} sizes="24px" loading="lazy" /></a>
                                 </div>
                             </div>
                             <div className="kontakts_wrapper_info-item last-item">

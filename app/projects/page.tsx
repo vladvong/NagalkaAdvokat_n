@@ -100,6 +100,13 @@ export default function ProjectsPage() {
     }
   };
 
+  const handleSelectPage = (page: number) => {
+    if (page !== currentPage) {
+      setCurrentPage(page);
+      window.scrollTo(0, 0);
+    }
+  };
+
   return (
     <main className="projects-page">
       <div className="container">
@@ -159,25 +166,40 @@ export default function ProjectsPage() {
               })}
             </div>
 
-            <div className="projects_pagination">
+            <div className="projects_pagination" role="navigation" aria-label="Пагінація проєктів">
               <button
                 className="projects_pagination_btn"
                 onClick={handlePrevPage}
                 disabled={currentPage === 1}
+                aria-label="Попередня сторінка"
               >
-                ← Назад
+                <span aria-hidden="true">‹</span>
+                <span className="projects_pagination_label">Попередня</span>
               </button>
 
-              <div className="projects_pagination_info">
-                Сторінка {currentPage} з {totalPages}
+              <div className="projects_pagination_numbers" aria-live="polite">
+                {Array.from({ length: totalPages }, (_, idx) => idx + 1).map((page) => (
+                  <button
+                    key={page}
+                    className={`projects_page_btn${page === currentPage ? ' active' : ''}`}
+                    onClick={() => handleSelectPage(page)}
+                    disabled={page === currentPage}
+                    aria-current={page === currentPage ? 'page' : undefined}
+                    aria-label={`Сторінка ${page}`}
+                  >
+                    {page}
+                  </button>
+                ))}
               </div>
 
               <button
                 className="projects_pagination_btn"
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages}
+                aria-label="Наступна сторінка"
               >
-                Далі →
+                <span className="projects_pagination_label">Наступна</span>
+                <span aria-hidden="true">›</span>
               </button>
             </div>
           </>

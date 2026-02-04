@@ -169,6 +169,7 @@ function Slider({ children } = {}) {
                                         </div>
                                         <div className="project-bottom">
                                             <p className="project-description">{project.description}</p>
+                                            <span className="project-card-button">Переглянути проєкт</span>
                                         </div>
                                     </div>
                                 </div>
