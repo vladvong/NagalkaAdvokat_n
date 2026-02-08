@@ -82,10 +82,11 @@ gtag('config', 'G-VG4Z8YLFH3');`}
           <BackToTop />
         </LanguageProvider>
         <Script
-          id="binotel-widget"
-          src="https://widgets.binotel.com/getcall/widgets/0g6n8j4sex72h4vne9ju.js"
+          id="binotel-getcall"
+          src="https://binotel.ua/getcall.js"
           strategy="afterInteractive"
         />
+        <div id="binotelGetCall" />
       </body>
     </html>
   );
