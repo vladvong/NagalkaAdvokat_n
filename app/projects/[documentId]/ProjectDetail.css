@@ -86,3 +86,24 @@
   .project_detail_image { height: 220px; }
   .project_title { font-size: 28px; }
 }
+
+
+.project_mini_block {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project_item_mini {
+  padding-left: 18px;
+  border-left: 3px solid rgba(0, 0, 0, 0.12);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--blue-dark);
+}
+
+/* Slight image polish */
+.project_detail_image {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
