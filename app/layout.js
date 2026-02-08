@@ -73,19 +73,22 @@ gtag('js', new Date());
 
 gtag('config', 'G-VG4Z8YLFH3');`}
         </Script>
+        
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <LanguageProvider>
           <Header />
+          <Script id="binotel-widget" strategy="afterInteractive">{
+          `(function(d, w, s) {
+  var widgetHash = '0g6n8j4sex72h4vne9ju', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
+  gcw.src = 'https://widgets.binotel.com/getcall/widgets/' + widgetHash + '.js';
+  var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+})(document, window, 'script');`
+        }</Script>
           {children}
           <Footer />
           <BackToTop />
         </LanguageProvider>
-        <Script
-          id="binotel-widget"
-          src="https://widgets.binotel.com/getcall/widgets/0g6n8j4sex72h4vne9ju.js"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

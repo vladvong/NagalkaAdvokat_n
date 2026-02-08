@@ -16,19 +16,6 @@ const nextConfig = {
     ],
   },
   trailingSlash: true,
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: "script-src 'self' https://binotel.ua https://widgets.binotel.com; object-src 'none';",
-          },
-        ],
-      },
-    ];
-  },
 };
 
 export default nextConfig;
