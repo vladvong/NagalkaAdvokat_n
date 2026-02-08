@@ -81,12 +81,13 @@ gtag('config', 'G-VG4Z8YLFH3');`}
           <Footer />
           <BackToTop />
         </LanguageProvider>
-        <Script
-          id="binotel-getcall"
-          src="https://binotel.ua/getcall.js"
-          strategy="afterInteractive"
-        />
-        <div id="binotelGetCall" />
+        <Script id="binotel-widget" strategy="afterInteractive">{
+          `(function(d, w, s) {
+  var widgetHash = '0g6n8j4sex72h4vne9ju', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
+  gcw.src = 'https://widgets.binotel.com/getcall/widgets/' + widgetHash + '.js';
+  var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+})(document, window, 'script');`
+        }</Script>
       </body>
     </html>
   );
