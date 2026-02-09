@@ -6,14 +6,7 @@ import './NewsDetail.css';
 import { IMAGES } from '@/constants/images';
 
 const STRAPI_BASE_URL = 'https://determined-desk-f2e043cadd.strapiapp.com';
-
-type Props = {
-  params: {
-    documentId: string;
-  };
-};
-
-export default async function NewsDetail({ params }: Props) {
+export default async function NewsDetail({ params }: any) {
   const resolvedParams = await params;
   const id = resolvedParams?.documentId ?? null;
 
