@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import './Home.css';
@@ -49,6 +49,8 @@ export default function Home() {
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState(null);
     const [showMap, setShowMap] = useState(false);
+    const ringsWrapperRef = useRef<HTMLDivElement | null>(null);
+    const [ringsAnimated, setRingsAnimated] = useState(false);
 
     useEffect(() => {
         // Симуляция загрузки - 2 секунды
@@ -75,6 +77,43 @@ export default function Home() {
         observer.observe(mapContainer);
         return () => observer.disconnect();
     }, []);
+
+    useEffect(() => {
+        const target = ringsWrapperRef.current;
+        if (!target || ringsAnimated) return;
+
+        let lockTimeout: ReturnType<typeof setTimeout> | null = null;
+
+        const lockScroll = () => {
+            document.documentElement.classList.add('scroll-lock');
+            document.body.classList.add('scroll-lock');
+        };
+
+        const unlockScroll = () => {
+            document.documentElement.classList.remove('scroll-lock');
+            document.body.classList.remove('scroll-lock');
+        };
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setRingsAnimated(true);
+                    lockScroll();
+                    lockTimeout = setTimeout(unlockScroll, 1800);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.55 }
+        );
+
+        observer.observe(target);
+
+        return () => {
+            observer.disconnect();
+            if (lockTimeout) clearTimeout(lockTimeout);
+            unlockScroll();
+        };
+    }, [ringsAnimated]);
 
     // Fetch competences from Strapi API (no pagination, title + description only)
     const [competences, setCompetences] = useState([]);
@@ -411,7 +450,10 @@ export default function Home() {
                         <p className="feature-block__subtitle">{t('home.collaboration_subtitle')}</p>
                     </div>
                 </div>
-                <div className="CollaborationModel_rings_wrapper">
+                <div
+                    className={`CollaborationModel_rings_wrapper ${ringsAnimated ? 'rings-animated' : ''}`}
+                    ref={ringsWrapperRef}
+                >
                     <div className="container">
                         <div className="CollaborationModel_rings_items">
                             <div className="CollaborationModel_rings_item">
