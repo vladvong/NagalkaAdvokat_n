@@ -1,0 +1,96 @@
+.reviews-slider-wrapper {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.reviews-slider-wrapper .splide {
+    flex: 1;
+}
+
+.reviews-slider-wrapper .splide__track {
+    overflow: hidden;
+}
+
+/* ================= ARROWS ================= */
+
+.new-slider-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-slider-arrow svg {
+    width: 28px;
+    height: 28px;
+}
+
+.new-slider-arrow.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* ================= CARD FIX ================= */
+
+.new-review_card {
+    background: #fff;
+    border-radius: 14px; 
+    padding: 24px;
+    
+    /* 1. This is the most important part - it clips the bottom text/content */
+    overflow: hidden; 
+    
+    /* 2. Ensure the card doesn't collapse or stretch weirdly */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+
+    /* 3. Forces the browser to render the clip-path correctly */
+    isolation: isolate; 
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* 4. FORCE Splide slides to match the height so the bottom isn't cut off by the track */
+.reviews-slider-wrapper .splide__slide {
+    height: auto; 
+    display: flex;
+    padding-bottom: 20px; /* Gives space for the shadow so it doesn't look flat */
+}
+
+.reviews-slider-wrapper .splide__list {
+    display: flex;
+    align-items: stretch; /* Ensures all cards are same height */
+}
+
+/* HEADER */
+
+.review_header {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.review_avatar {
+    border-radius: 50%;
+}
+
+.review_name {
+    margin: 0;
+    font-weight: 700;
+    color: var(--blue-dark);
+}
+
+.review_text {
+    margin: 0;
+    color: #374151;
+    line-height: 1.6;
+}

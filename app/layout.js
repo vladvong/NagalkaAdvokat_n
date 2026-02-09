@@ -47,7 +47,7 @@ export const metadata = {
   robots: "index, follow",
   icons: {
     icon: [
-      { url: "/favicon.ico" },
+      { url: "/icon.png" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
     apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],

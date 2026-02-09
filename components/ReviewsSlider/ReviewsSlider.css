@@ -1,120 +1,92 @@
-/* ================================================
-   REVIEWS SLIDER
-   ================================================ */
-.splide{
-    padding:0 ;
-}
+/* ===============================
+   REVIEWS PHOTO SLIDER
+================================ */
+
 .reviews-slider {
     position: relative;
-    width: 80%;
-    height: auto;
     display: flex;
     align-items: center;
-    gap: 10px;
-    box-sizing: border-box;
-    overflow: visible;
-}
-
-.reviews-slider__track {
+    gap: 16px;
     width: 100%;
+    overflow: hidden;
+}
+
+/* Track */
+.reviews-slider__track {
     flex: 1;
-    overflow: visible;
 }
 
-.reviews-slide {
-    height: 100%;
-    display: flex;
+/* PHOTO CARD */
+.review-photo-card {
+    position: relative;
+    height: 260px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f3f3f3;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
 
-.review_card--slider {
-    max-width: 720px;
-    margin: 0 auto;
-    background: #fff;
-    color: var(--blue-dark);
-    height: 320px;
-    display: flex;
-    flex-direction: column;
+/* FIX bottom radius bug */
+.review-photo-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    pointer-events: none;
 }
 
+.review-photo-img {
+    /* Change this */
+    object-fit: contain; 
+    object-position: center;
+}
+/* Skeleton */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #eee 25%,
+        #f5f5f5 37%,
+        #eee 63%
+    );
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+}
+
+/* ARROWS */
 .reviews-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     border: none;
-    background: transparent;
-    color: #fff;
+    color: #10202d;
+    font-size: 28px;
+    font-weight: 600;
     cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.reviews-arrow__icon {
-    width: 28px;
-    height: 28px;
-    display: block;
-    color: #fff;
-}
-
-.review_card--slider .review_name,
-.review_card--slider .review_text {
-    color: var(--blue-dark);
+    transition: transform .2s ease, opacity .2s ease;
+    z-index: 2;
 }
 
 .reviews-arrow:hover:not(.disabled) {
-    color: rgba(16, 32, 45, 0.75);
-    transform: translateX(2px);
+    transform: scale(1.08);
 }
 
 .reviews-arrow.disabled {
-    opacity: 0.4;
+    opacity: 0.35;
     cursor: not-allowed;
 }
 
-@media (max-width: 768px) {
-    .reviews-slider {
-        margin: 0 auto;
-        width: 100%;
-        justify-content: center;
-        gap: 8px;
-        padding: 0 36px;
-    }
-
-    .reviews-slider__track {
-        max-width: 100%;
-        margin: 0 auto;
-    }
-
-    .reviews-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .reviews-arrow--prev {
-        left: 0;
-    }
-
-    .reviews-arrow--next {
-        right: 0;
-    }
-
-    .reviews-arrow:hover:not(.disabled) {
-        transform: translateY(-50%);
-    }
-
-    .reviews-arrow__icon {
-        width: 24px;
-        height: 24px;
-    }
-
-    .review_card--slider {
-        width: 80%;
-        height: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .reviews-arrow__icon {
-        width: 22px;
-        height: 22px;
+/* RESPONSIVE */
+@media (max-width: 640px) {
+    .review-photo-card {
+        height: 220px;
     }
 }

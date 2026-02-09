@@ -7,6 +7,7 @@ import './Home.css';
 import { useLanguage } from '../../context/useLanguage';
 import { IMAGES } from '@/constants/images';
 import Preloader from '../Preloader/Preloader';
+import NewReviewSlider from '../NewReviewSlider/NewReviewSlider';
 const Slider = dynamic(() => import('../Slider/Slider'), {
     ssr: false,
     loading: () => <div className="project_slider__placeholder" aria-hidden="true" />,
@@ -171,6 +172,75 @@ export default function Home() {
 
     const [allReviews, setAllReviews] = useState([]);
     const [reviewsLoading, setReviewsLoading] = useState(true);
+
+    const [reviewPhotos, setReviewPhotos] = useState([]);
+    const [reviewPhotosLoading, setReviewPhotosLoading] = useState(true);
+
+    useEffect(() => {
+        let mounted = true;
+
+        const fetchReviewPhotos = async () => {
+            try {
+                const res = await fetch(
+                    'https://determined-desk-f2e043cadd.strapiapp.com/api/photo-reviews?sort=createdAt:desc&populate=image',
+                    {
+                        headers: {
+                            Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API}`,
+                        },
+                    }
+                );
+
+                if (!res.ok) {
+                    throw new Error('Failed to fetch review photos');
+                }
+
+                const json = await res.json();
+
+                const items = (json.data ?? []).map((item: any) => {
+                    const img = item.image;
+
+                    if (!img) return null;
+
+                    // priority: medium → small → thumbnail → original
+                    const selected =
+                        img.formats?.medium ||
+                        img.formats?.small ||
+                        img.formats?.thumbnail ||
+                        img;
+
+                    const url = selected.url.startsWith('http')
+                        ? selected.url
+                        : `https://determined-desk-f2e043cadd.media.strapiapp.com${selected.url}`;
+
+                    return {
+                        id: item.id,
+                        image: url,
+                        width: selected.width ?? 800,
+                        height: selected.height ?? 600,
+                    };
+                }).filter(Boolean);
+
+                if (mounted) {
+                    setReviewPhotos(items);
+                    setReviewPhotosLoading(false);
+                }
+            } catch (error) {
+                console.error('Photo reviews error:', error);
+                if (mounted) {
+                    setReviewPhotos([]);
+                    setReviewPhotosLoading(false);
+                }
+            }
+        };
+
+        fetchReviewPhotos();
+
+        return () => {
+            mounted = false;
+        };
+    }, []);
+
+
 
     useEffect(() => {
         let mounted = true;
@@ -410,36 +480,11 @@ export default function Home() {
                             <p className="feature-block__subtitle">{t('reviews.subtitle')}</p>
                         </div>
                         <div className="reviews_slide_wrapper">
-                            <ReviewsSlider reviews={allReviews} loading={reviewsLoading} />
+                            <ReviewsSlider reviews={reviewPhotos} loading={reviewPhotosLoading} />
                         </div>
                     </div>
                     <div className="reviews_items">
-                        {reviewsLoading ? (
-                            <p>Завантаження відгуків...</p>
-                        ) : (
-                            allReviews.slice(0, 3).map((review) => (
-                                <div key={review.id} className="review_card">
-                                    <div className="review_header">
-                                        <Image
-                                            src={review.avatar}
-                                            alt={review.name}
-                                            className="review_avatar"
-                                            width={60}
-                                            height={60}
-                                            sizes="60px"
-                                            loading="lazy"
-                                        />
-                                        <div className="review_info">
-                                            <h4 className="review_name">{review.name}</h4>
-                                            <div className="review_rating">
-                                                <span>{review.rating}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p className="review_text">{review.text}</p>
-                                </div>
-                            ))
-                        )}
+                            <NewReviewSlider reviews={allReviews} loading={reviewsLoading} />
                     </div>
                 </div>
             </div>
