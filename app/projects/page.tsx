@@ -16,7 +16,7 @@ export default function ProjectsPage() {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const pageSize = 4; // number of projects per page ( change after testing)
+  const pageSize = 12; // number of projects per page ( change after testing)
 
   useEffect(() => {
     const fetchProjects = async () => {
