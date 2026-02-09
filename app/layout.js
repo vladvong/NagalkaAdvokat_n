@@ -46,7 +46,11 @@ export const metadata = {
   },
   robots: "index, follow",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
   },
   alternates: {
     canonical: "https://nagalka-advokat.ua",
