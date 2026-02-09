@@ -2,6 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   compiler: { styledComponents: true },
+
+  experimental: {
+    turbo: false,
+  },
+
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -15,6 +20,7 @@ const nextConfig = {
       },
     ],
   },
+
   trailingSlash: true,
 };
 
