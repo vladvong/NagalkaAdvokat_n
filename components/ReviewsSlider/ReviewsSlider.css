@@ -1,7 +1,10 @@
 /* ===============================
    REVIEWS PHOTO SLIDER
 ================================ */
-
+.splide{
+    padding: 0 20px;
+    height: 100%;
+}
 .reviews-slider {
     position: relative;
     display: flex;
@@ -19,11 +22,11 @@
 /* PHOTO CARD */
 .review-photo-card {
     position: relative;
-    height: 260px;
+    height: 350px;
     border-radius: 16px;
     overflow: hidden;
     background: #f3f3f3;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 /* FIX bottom radius bug */
@@ -37,24 +40,28 @@
 
 .review-photo-img {
     /* Change this */
-    object-fit: contain; 
+    object-fit: contain;
     object-position: center;
 }
+
 /* Skeleton */
 .skeleton {
-    background: linear-gradient(
-        90deg,
-        #eee 25%,
-        #f5f5f5 37%,
-        #eee 63%
-    );
+    background: linear-gradient(90deg,
+            #eee 25%,
+            #f5f5f5 37%,
+            #eee 63%);
     background-size: 400% 100%;
     animation: shimmer 1.4s ease infinite;
 }
 
 @keyframes shimmer {
-    0% { background-position: 100% 0; }
-    100% { background-position: 0 0; }
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
 }
 
 /* ARROWS */
@@ -67,7 +74,7 @@
     font-size: 28px;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,8 +92,69 @@
 }
 
 /* RESPONSIVE */
+@media (max-width: 768px) {
+    .reviews-slider {
+        position: relative; /* добавляем position relative для overlay стрелок */
+        gap: 0; /* убираем gap, так как стрелки будут overlay */
+    }
+
+    .reviews-slider__track {
+        flex: 1;
+    }
+
+    .reviews-arrow {
+        position: absolute; /* делаем стрелки overlay на слайдере */
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
+        background: rgba(255, 255, 255, 0.8); /* полупрозрачный фон для видимости */
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .reviews-arrow--prev {
+        left: 10px; /* позиция слева */
+    }
+
+    .reviews-arrow--next {
+        right: 10px; /* позиция справа */
+    }
+
+    .review-photo-card {
+        height: 240px;
+        border-radius: 12px;
+    }
+
+    .splide {
+        padding: 0;
+    }
+}
+
 @media (max-width: 640px) {
     .review-photo-card {
         height: 220px;
     }
+}
+
+@media (max-width: 480px) {
+    .reviews-slider {
+        gap: 8px;
+    }
+
+    .review-photo-card {
+        height: 200px;
+        border-radius: 10px;
+    }
+
+    .reviews-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+        margin: 8px 0;
+        /* добавляем margin, чтобы стрелки были ближе к слайдеру */
+    }
+
 }

@@ -8,12 +8,19 @@
 
 .reviews-slider-wrapper .splide {
     flex: 1;
+    padding: 0 20px;
+    width: 100%;
 }
 
 .reviews-slider-wrapper .splide__track {
+    padding: 40px 0; /* Adds space for the shadow */
     overflow: hidden;
-}
 
+}
+.reviews_items{
+    display: flex;
+    justify-content: center;
+}
 /* ================= ARROWS ================= */
 
 .new-slider-arrow {
@@ -93,4 +100,73 @@
     margin: 0;
     color: #374151;
     line-height: 1.6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Ноутбуки / небольшие десктопы (до 1200px) */
+@media (max-width: 1200px) {
+    .reviews-slider-wrapper {
+        gap: 12px;
+        width: 100%;
+    }
+    .reviews-slider-wrapper .splide__track {
+        padding: 32px 0;
+    }
+
+    .new-review_card {
+        padding: 20px;
+    }
+
+    .review_header {
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .new-slider-arrow svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Планшеты и телефоны (до 768px) */
+@media (max-width: 768px) {
+    .reviews-slider-wrapper {
+        display: block; /* убираем flex, чтобы не тянуть контент шире экрана */
+        gap: 12px;
+        width: 80%;
+    }
+
+    .reviews-slider-wrapper .splide {
+        padding: 0;
+    }
+
+    .reviews-slider-wrapper .splide__track {
+        padding: 20px 0;
+    }
+
+    .new-review_card {
+        padding: 16px;
+        border-radius: 12px;
+        height: 100% /* Позволяет карточкам быть разной высоты, что нормально для мобильных */
+    }
+
+    .review_header {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .review_text {
+        font-size: 14px;
+    }
+
+    .new-slider-arrow {
+        padding: 6px;
+        margin: 8px 0; /* добавляем margin, чтобы стрелки были ближе к слайдеру */
+    }
+
+    .new-slider-arrow svg {
+        width: 20px;
+        height: 20px;
+    }
 }

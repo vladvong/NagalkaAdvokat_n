@@ -37,17 +37,7 @@ export default function ReviewsSlider({
 
     return (
         <div className="reviews-slider">
-            {/* PREV */}
-            <button
-                className={`new-slider-arrow new-slider-arrow--prev ${!canPrev ? "disabled" : ""}`}
-                onClick={() => splideRef.current?.splide.go("<")}
-                disabled={!canPrev}
-                aria-label="Previous review"
-            >
-                <svg viewBox="0 0 24 24">
-                    <path d="M15 4L7 12l8 8" fill="none" stroke="currentColor" strokeWidth="2" />
-                </svg>
-            </button>
+           
 
             <Splide
                 ref={splideRef}
@@ -84,18 +74,6 @@ export default function ReviewsSlider({
                           </SplideSlide>
                       ))}
             </Splide>
-
-            {/* NEXT */}
-            <button
-                className={`new-slider-arrow new-slider-arrow--next ${!canNext ? "disabled" : ""}`}
-                onClick={() => splideRef.current?.splide.go(">")}
-                disabled={!canNext}
-                aria-label="Next review"
-            >
-                <svg viewBox="0 0 24 24">
-                    <path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" strokeWidth="2" />
-                </svg>
-            </button>
         </div>
     );
 }

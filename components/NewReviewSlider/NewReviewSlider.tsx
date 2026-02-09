@@ -21,18 +21,8 @@ export default function NewReviewSlider({ reviews = [], loading }) {
     };
 
     return (
-        <div className="reviews-slider-wrapper">
-            {/* LEFT ARROW */}
-            <button
-                className={`new-slider-arrow new-slider-arrow--prev ${!canPrev ? "disabled" : ""}`}
-                onClick={() => splideRef.current?.splide.go("<")}
-                disabled={!canPrev}
-                aria-label="Previous review"
-            >
-                <svg viewBox="0 0 24 24">
-                    <path d="M15 4L7 12l8 8" fill="none" stroke="currentColor" strokeWidth="2" />
-                </svg>
-            </button>
+        
+            <div className="reviews-slider-wrapper">
 
             {/* SLIDER */}
             <Splide
@@ -43,7 +33,7 @@ export default function NewReviewSlider({ reviews = [], loading }) {
                     arrows: false,
                     pagination: false,
                     breakpoints: {
-                        1024: { perPage: 2 },
+                        1200: { perPage: 2 },
                         768: { perPage: 1 },
                     },
                 }}
@@ -77,18 +67,7 @@ export default function NewReviewSlider({ reviews = [], loading }) {
                           </SplideSlide>
                       ))}
             </Splide>
-
-            {/* RIGHT ARROW */}
-            <button
-                className={`new-slider-arrow new-slider-arrow--next ${!canNext ? "disabled" : ""}`}
-                onClick={() => splideRef.current?.splide.go(">")}
-                disabled={!canNext}
-                aria-label="Next review"
-            >
-                <svg viewBox="0 0 24 24">
-                    <path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" strokeWidth="2" />
-                </svg>
-            </button>
         </div>
+        
     );
 }

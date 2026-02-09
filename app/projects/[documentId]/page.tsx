@@ -65,55 +65,74 @@ export default async function ProjectDetail({ params }) {
 
   return (
     <main className="project_detail_main">
-      <div className="project_detail_container">
-        <a className="project_back" href="/projects">
-          ← Повернутись до проєктів
-        </a>
+      <div className="container">
+        {/* Hero Section */}
+        <section className="project_hero">
+          <a className="project_back" href="/projects">
+            ← Повернутись до проєктів
+          </a>
 
-        <h1 className="project_title">{title}</h1>
+          {imageFinalUrl && (
+            <div className="project_hero_image">
+              <Image
+                src={imageFinalUrl}
+                alt={title}
+                fill
+                priority
+                className="project_image"
+              />
+              <div className="project_hero_overlay">
+                <div className="project_hero_content">
+                  <h1 className="project_title">{title}</h1>
+                  {subtitle && (
+                    <p className="project_subtitle">{subtitle}</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
 
-        {subtitle && (
-          <p className="project_subtitle">{subtitle}</p>
-        )}
+          {!imageFinalUrl && (
+            <div className="project_hero_no_image">
+              <h1 className="project_title">{title}</h1>
+              {subtitle && (
+                <p className="project_subtitle">{subtitle}</p>
+              )}
+            </div>
+          )}
+        </section>
 
-        {imageFinalUrl && (
-          <div className="project_detail_image">
-            <Image
-              src={imageFinalUrl}
-              alt={title}
-              fill
-              priority
-              className="project_image"
-            />
-          </div>
-        )}
+        {/* Content Section */}
+        <section className="project_content">
+          {/* Mini subtitles */}
+          {miniSubtitles.length > 0 && (
+            <div className="project_mini_block">
+              <h2 className="project_section_title">Деталі проєкту</h2>
+              <div className="project_mini_list">
+                {miniSubtitles.map((text, index) => (
+                  <p key={index} className="project_item_mini">{text}</p>
+                ))}
+              </div>
+            </div>
+          )}
 
-        {/* Mini subtitles */}
-        {miniSubtitles.length > 0 && (
-          <div className="project_mini_block">
-            {miniSubtitles.map((text, index) => (
-              <p
-                key={index}
-                className="project_item_mini"
+          {/* Actions */}
+          {link && link !== '#' && (
+            <div className="project_actions">
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project_view_btn"
               >
-                {text}
-              </p>
-            ))}
-          </div>
-        )}
-
-        {link && link !== '#' && (
-          <div className="project_actions">
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project_view_btn"
-            >
-              Переглянути проєкт
-            </a>
-          </div>
-        )}
+                Переглянути проєкт
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          )}
+        </section>
       </div>
     </main>
   );
