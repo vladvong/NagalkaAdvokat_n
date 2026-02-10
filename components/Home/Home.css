@@ -756,8 +756,6 @@ details[open] span {
   text-transform: uppercase;
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--light);
-  box-shadow: 0 0 0 1px var(--light);
   transition: box-shadow 0.3s ease;
 }
 
