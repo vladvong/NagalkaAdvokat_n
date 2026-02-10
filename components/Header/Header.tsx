@@ -1,13 +1,42 @@
 "use client";
 
 import './Header.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/useLanguage';
 
 export default function Header() {
     const { t, language, setLanguage } = useLanguage();
     const [isOpen, setIsOpen] = useState(false);
     const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        const updateHeader = () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY) {
+                setIsHidden(true);
+            } else if (currentScrollY < lastScrollY) {
+                setIsHidden(false);
+            }
+            lastScrollY = currentScrollY;
+            ticking = false;
+        };
+
+        const handleScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const handleLanguageChange = (lang) => {
         setLanguage(lang);
@@ -16,7 +45,7 @@ export default function Header() {
 
     return (
         <div>
-            <header className="header">
+            <header className={`header ${isHidden ? 'header--hidden' : ''}`}>
                 <div className="container">
                     <div className='header__wrapper'>
                         <div className="header__logo">

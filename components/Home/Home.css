@@ -738,10 +738,10 @@ details[open] span {
 }
 
 .ring {
+  cursor: pointer;
   width: 260px;
   height: 260px;
   border-radius: 50%;
-  border: 6px solid;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -750,12 +750,39 @@ details[open] span {
   font-weight: bold;
   color: var(--light);
   font-family: 'Exo2-Extrabold';
-  border: 1px dashed var(--light);
+  border: 1px solid var(--light);
   gap: 40px;
   font-size: 20px;
   text-transform: uppercase;
   position: relative;
   overflow: hidden;
+  border: 1px solid var(--light);
+  box-shadow: 0 0 0 1px var(--light);
+  transition: box-shadow 0.3s ease;
+}
+
+.ring::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 3px dashed var(--light);
+  border-radius: 50%;
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in-out;
+}
+
+.ring:hover::before {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.ring:hover{
+  box-shadow: none;
+  border: none;
 }
 
 .ring p {
@@ -768,7 +795,7 @@ details[open] span {
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-  border: 8px solid transparent;
+  border: 8px dashed transparent;
   border-top-color: rgba(204, 208, 207, 0.95);
   border-right-color: rgba(204, 208, 207, 0.6);
   border-bottom-color: rgba(204, 208, 207, 0.35);
@@ -776,27 +803,13 @@ details[open] span {
   opacity: 0;
   pointer-events: none;
   box-sizing: border-box;
-}
-
-.rings-animated .ring::after {
-  opacity: 1;
-  animation: ring-spin 1.4s linear infinite;
-}
-
-.rings-animated .ring-2::after {
-  animation-delay: 0.15s;
-}
-
-@keyframes ring-spin {
-  to {
-    transform: rotate(360deg);
-  }
+  transform: rotate(0deg);
+  transition: opacity 0.3s ease, transform 1s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rings-animated .ring::after {
-    animation-duration: 0s;
-    animation-iteration-count: 1;
+  .ring:hover::after {
+    transition-duration: 0s;
   }
 }
 
