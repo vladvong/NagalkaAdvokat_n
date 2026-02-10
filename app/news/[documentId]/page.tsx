@@ -66,8 +66,8 @@ export default async function NewsDetail({ params }: any) {
               <Image
                 src={IMAGES.NEWS_AUTHOR}
                 alt="Автор"
-                width={96}
-                height={96}
+                width={1920}
+                height={1200}
                 className="news_detail_author-photo"
               />
 

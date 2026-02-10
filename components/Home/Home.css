@@ -556,6 +556,7 @@ details[open] span {
   margin-bottom: 60px;
   overflow: hidden;
   width: 100%;
+  background: none !important;
 }
 
 .project_slider__placeholder {
