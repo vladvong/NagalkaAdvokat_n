@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import '@/app/globals.css';
 import './NewsDetail.css';
 import { IMAGES } from '@/constants/images';
+import { linkifyText } from '@/utils/linkifyText';
 
 const STRAPI_BASE_URL = 'https://determined-desk-f2e043cadd.strapiapp.com';
 export default async function NewsDetail({ params }: any) {
@@ -141,7 +142,7 @@ export default async function NewsDetail({ params }: any) {
                       key={index}
                       className="news_item_mini"
                     >
-                      {text}
+                      {linkifyText(text)}
                     </p>
                   ))}
                 </div>

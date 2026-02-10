@@ -250,3 +250,18 @@
   font-size: 16px;
   line-height: 1.6;
 }
+
+
+.news_item_mini .project_inline_link {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  word-break: break-word;
+}
+
+.news_item_mini .project_inline_link:hover {
+  color: #4da3ff;
+  text-decoration-color: #4da3ff;
+}

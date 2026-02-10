@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import './ProjectDetail.css';
 import { IMAGES } from '@/constants/images';
+import { linkifyText } from '@/utils/linkifyText';
 
 const STRAPI_BASE_URL = 'https://determined-desk-f2e043cadd.strapiapp.com';
 
@@ -110,7 +111,7 @@ export default async function ProjectDetail({ params }) {
               <h2 className="project_section_title">Деталі проєкту</h2>
               <div className="project_mini_list">
                 {miniSubtitles.map((text, index) => (
-                  <p key={index} className="project_item_mini">{text}</p>
+                  <p key={index} className="project_item_mini">{linkifyText(text)}</p>
                 ))}
               </div>
             </div>
