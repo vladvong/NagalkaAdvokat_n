@@ -137,19 +137,14 @@ export default function Home() {
                 }
                 const json = await res.json();
                 const items = (json.data || []).map((item) => {
+                    const paragraphs: string[] = (item.paragraphs || []).map((p) => p.text || '');
 
-                const listItems: string[] = [];
-                for (let i = 1; i <= 10; i++) {
-                    const key = `listItem${i}`;
-                    if (item[key]) listItems.push(item[key]);
-                }
-
-                return {
-                    id: item.id,
-                    title: item.title || '',
-                    description: item.description || '',
-                    listItems,
-                };
+                    return {
+                        id: item.id,
+                        title: item.title || '',
+                        description: item.description || '',
+                        paragraphs, 
+                    };
                 });
 
                 if (mounted) {
@@ -440,11 +435,11 @@ export default function Home() {
                         <details key={item.id} className="competency-item">
                             <summary className="competency-title">{item.title}</summary>
                             <div className="competency-content">
-                            {item.listItems.length > 0 && (
+                            {item.paragraphs.length > 0 && (
                                 <ul className="competency-list">
-                                {item.listItems.map((li, idx) => (
-                                    <li key={idx} className="competency-list-item">{li}</li>
-                                ))}
+                                    {item.paragraphs.map((p, idx) => (
+                                        <li key={idx} className="competency-list-item">{p}</li>
+                                    ))}
                                 </ul>
                             )}
                             {item.description && (

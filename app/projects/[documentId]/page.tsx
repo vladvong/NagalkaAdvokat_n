@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import './ProjectDetail.css';
 import { IMAGES } from '@/constants/images';
+import { linkifyText } from '@/utils/linkifyText';
 
 const STRAPI_BASE_URL = 'https://determined-desk-f2e043cadd.strapiapp.com';
 
@@ -29,24 +30,7 @@ export default async function ProjectDetail({ params }) {
 
   if (!item) return notFound();
 
-  const title = item.title;
-  const subtitle = item.subtitle;
-  const link = item.link ?? '#';
-  const imageObj = item.image ?? null;
-
-  /** ----------------------------
-   * Mini subtitles collection
-   * ---------------------------- */
-  const miniSubtitles = [];
-
-  for (let i = 0; i <= 10; i++) {
-    const key = i === 0 ? 'miniSubtitle' : `miniSubtitle${i}`;
-    const value = item?.[key];
-
-    if (typeof value === 'string' && value.trim()) {
-      miniSubtitles.push(value.trim());
-    }
-  }
+  const { title, subtitle, link = '#', image: imageObj, paragraphs } = item;
 
   /** ----------------------------
    * Image handling
@@ -84,9 +68,7 @@ export default async function ProjectDetail({ params }) {
               <div className="project_hero_overlay">
                 <div className="project_hero_content">
                   <h1 className="project_title">{title}</h1>
-                  {subtitle && (
-                    <p className="project_subtitle">{subtitle}</p>
-                  )}
+                  {subtitle && <p className="project_subtitle">{subtitle}</p>}
                 </div>
               </div>
             </div>
@@ -95,22 +77,22 @@ export default async function ProjectDetail({ params }) {
           {!imageFinalUrl && (
             <div className="project_hero_no_image">
               <h1 className="project_title">{title}</h1>
-              {subtitle && (
-                <p className="project_subtitle">{subtitle}</p>
-              )}
+              {subtitle && <p className="project_subtitle">{subtitle}</p>}
             </div>
           )}
         </section>
 
         {/* Content Section */}
         <section className="project_content">
-          {/* Mini subtitles */}
-          {miniSubtitles.length > 0 && (
+          {/* Paragraphs */}
+          {paragraphs?.length > 0 && (
             <div className="project_mini_block">
               <h2 className="project_section_title">Деталі проєкту</h2>
               <div className="project_mini_list">
-                {miniSubtitles.map((text, index) => (
-                  <p key={index} className="project_item_mini">{text}</p>
+                {paragraphs.map((p, index) => (
+                  <p key={index} className="project_item_mini">
+                    {linkifyText(p.text)}
+                  </p>
                 ))}
               </div>
             </div>
@@ -126,7 +108,12 @@ export default async function ProjectDetail({ params }) {
                 className="project_view_btn"
               >
                 Переглянути проєкт
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
                   <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>

@@ -4,8 +4,10 @@ import { notFound } from 'next/navigation';
 import '@/app/globals.css';
 import './NewsDetail.css';
 import { IMAGES } from '@/constants/images';
+import { linkifyText } from '@/utils/linkifyText';
 
 const STRAPI_BASE_URL = 'https://determined-desk-f2e043cadd.strapiapp.com';
+
 export default async function NewsDetail({ params }: any) {
   const resolvedParams = await params;
   const id = resolvedParams?.documentId ?? null;
@@ -27,24 +29,7 @@ export default async function NewsDetail({ params }: any) {
   const { data } = await res.json();
   if (!data) return notFound();
 
-  const {
-    title,
-    subtitle,
-    date,
-    image,
-    ...rest
-  } = data;
-
-  const miniSubtitles: string[] = [];
-
-  for (let i = 0; i <= 10; i++) {
-    const key = i === 0 ? 'miniSubtitle' : `miniSubtitle${i}`;
-    const value = rest?.[key];
-
-    if (typeof value === 'string' && value.trim()) {
-      miniSubtitles.push(value.trim());
-    }
-  }
+  const { title, subtitle, date, image, paragraphs } = data;
 
   const imageUrl =
     image?.formats?.large?.url ||
@@ -90,12 +75,8 @@ export default async function NewsDetail({ params }: any) {
                 <span className="news_detail_author-badge">
                   Автор матеріалу
                 </span>
-                <div className="news_detail_author-name">
-                  Ярослав Нагалка
-                </div>
-                <div className="news_detail_author-role">
-                  адвокат
-                </div>
+                <div className="news_detail_author-name">Ярослав Нагалка</div>
+                <div className="news_detail_author-role">адвокат</div>
 
                 <div className="news_detail_author-contacts">
                   <a href="tel:+380988817466">+38 (098) 881-74-66</a>
@@ -110,17 +91,9 @@ export default async function NewsDetail({ params }: any) {
             <div className="news_detail_text">
               <h1 className="news_title">{title}</h1>
 
-              {formattedDate && (
-                <div className="news_date">
-                  {formattedDate}
-                </div>
-              )}
+              {formattedDate && <div className="news_date">{formattedDate}</div>}
 
-              {subtitle && (
-                <p className="news_description">
-                  {subtitle}
-                </p>
-              )}
+              {subtitle && <p className="news_description">{subtitle}</p>}
 
               {/* Main image */}
               <div className="news_detail_image">
@@ -133,15 +106,12 @@ export default async function NewsDetail({ params }: any) {
                 />
               </div>
 
-              {/* Mini subtitles */}
-              {miniSubtitles.length > 0 && (
+              {/* Paragraphs */}
+              {paragraphs?.length > 0 && (
                 <div className="news_mini_block">
-                  {miniSubtitles.map((text, index) => (
-                    <p
-                      key={index}
-                      className="news_item_mini"
-                    >
-                      {text}
+                  {paragraphs.map((p: any, index: number) => (
+                    <p key={index} className="news_item_mini">
+                      {linkifyText(p.text)}
                     </p>
                   ))}
                 </div>
