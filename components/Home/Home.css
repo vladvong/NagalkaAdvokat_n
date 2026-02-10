@@ -552,7 +552,7 @@ details[open] span {
 }
 
 .slider-wrapper{
-  background: none !important;
+  background: red;
 }
 
 .project_slider {

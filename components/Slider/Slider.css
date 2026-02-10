@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    background: none !important;
 }
 
 .slider-container {
@@ -36,7 +37,6 @@
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     height: 320px;
@@ -56,7 +56,7 @@
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
     z-index: 3;
 }
 
