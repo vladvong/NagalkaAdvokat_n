@@ -22,7 +22,7 @@ export default function ProjectsPage() {
     const fetchProjects = async () => {
       const cacheKey = `projects_page_${currentPage}`;
       const cacheTimeKey = `projects_time_${currentPage}`;
-      const cacheExpiry = 5 * 60 * 1000; // 5 minutes
+      const cacheExpiry = 1 * 60 * 1000; // 1 minutes
 
       const cachedData = localStorage.getItem(cacheKey);
       const cachedTime = localStorage.getItem(cacheTimeKey);

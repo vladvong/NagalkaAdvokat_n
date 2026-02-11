@@ -8,17 +8,6 @@ import "./NewReviewSlider.css";
 
 export default function NewReviewSlider({ reviews = [], loading }) {
     const splideRef = useRef(null);
-    const [canPrev, setCanPrev] = useState(false);
-    const [canNext, setCanNext] = useState(true);
-
-    const updateArrows = () => {
-        const splide = splideRef.current?.splide;
-        if (!splide) return;
-
-        const end = splide.Components.Controller.getEnd();
-        setCanPrev(splide.index > 0);
-        setCanNext(splide.index < end);
-    };
 
     return (
         
@@ -28,6 +17,8 @@ export default function NewReviewSlider({ reviews = [], loading }) {
             <Splide
                 ref={splideRef}
                 options={{
+                    type: "loop",
+                    speed: 600,
                     perPage: 3,
                     gap: "24px",
                     arrows: false,
@@ -37,8 +28,6 @@ export default function NewReviewSlider({ reviews = [], loading }) {
                         768: { perPage: 1 },
                     },
                 }}
-                onMounted={updateArrows}
-                onMove={updateArrows}
             >
                 {loading
                     ? [1, 2, 3].map((i) => (

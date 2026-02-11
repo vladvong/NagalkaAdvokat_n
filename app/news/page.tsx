@@ -17,7 +17,7 @@ function News() {
     const fetchNews = async () => {
       const cacheKey = `news_page_${currentPage}`;
       const cacheTimeKey = `news_time_${currentPage}`;
-      const cacheExpiry = 5 * 60 * 1000; // 5 минут
+      const cacheExpiry = 1 * 60 * 1000; // 1 минут
 
       const cachedData = localStorage.getItem(cacheKey);
       const cachedTime = localStorage.getItem(cacheTimeKey);

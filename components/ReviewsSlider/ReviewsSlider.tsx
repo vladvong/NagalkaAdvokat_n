@@ -23,17 +23,6 @@ export default function ReviewsSlider({
     loading = true,
 }: Props) {
     const splideRef = useRef<any>(null);
-    const [canPrev, setCanPrev] = useState(false);
-    const [canNext, setCanNext] = useState(true);
-
-    const updateArrows = () => {
-        const splide = splideRef.current?.splide;
-        if (!splide) return;
-
-        const end = splide.Components.Controller.getEnd();
-        setCanPrev(splide.index > 0);
-        setCanNext(splide.index < end);
-    };
 
     return (
         <div className="reviews-slider">
@@ -43,6 +32,8 @@ export default function ReviewsSlider({
                 ref={splideRef}
                 className="reviews-slider__track"
                 options={{
+                   type: "loop",
+                    speed: 600,
                     perPage: 1, // ✅ ONE IMAGE ONLY
                     gap: "0px",
                     arrows: false,
@@ -50,8 +41,6 @@ export default function ReviewsSlider({
                     drag: true,
                     rewind: false,
                 }}
-                onMounted={updateArrows}
-                onMove={updateArrows}
             >
                 {loading
                     ? [1].map((i) => (
