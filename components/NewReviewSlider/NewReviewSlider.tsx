@@ -23,6 +23,10 @@ export default function NewReviewSlider({ reviews = [], loading }) {
                     gap: "24px",
                     arrows: false,
                     pagination: false,
+                    autoplay: true,
+                    interval: 3500,
+                    pauseOnHover: true,
+                    pauseOnFocus: true,
                     breakpoints: {
                         1200: { perPage: 2 },
                         768: { perPage: 1 },

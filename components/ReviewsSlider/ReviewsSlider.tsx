@@ -40,6 +40,10 @@ export default function ReviewsSlider({
                     pagination: false,
                     drag: true,
                     rewind: false,
+                    autoplay: true,
+                    interval: 5000,
+                    pauseOnHover: true,
+                    pauseOnFocus: true,
                 }}
             >
                 {loading

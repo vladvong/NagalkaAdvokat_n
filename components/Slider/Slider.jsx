@@ -101,7 +101,10 @@ function Slider({ children } = {}) {
           gap: "24px",
           arrows: false,
           pagination: false,
-          autoplay: false,
+          autoplay: true,
+          interval: 4000,
+          pauseOnHover: true,
+          pauseOnFocus: true,
           speed: 600,
           breakpoints: {
             1440: {
