@@ -25,13 +25,13 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "uk_UA",
-    url: "https://nagalka-advokat.ua",
+    url: "https://advokatnagalka.com.ua",
     title: "Ярослав Нагалка - Адвокат у Києві | Захист інтересів бізнесу",
     description: "Понад 8 років досвіду в захисті бізнесу та фізичних осіб. Судові спори, кримінальні провадження, податкові перевірки. Комплексні рішення для зменшення ризиків.",
     siteName: "Ярослав Нагалка Адвокат",
     images: [
       {
-        url: "https://nagalka-advokat.ua/assets/images/Hover-image.webp",
+        url: "https://advokatnagalka.com.ua/assets/images/Hover-image.webp",
         width: 1200,
         height: 630,
         alt: "Ярослав Нагалка - Адвокат у Києві",
@@ -49,10 +49,10 @@ export const metadata = {
     icon: "/icon.svg",
   },
   alternates: {
-    canonical: "https://nagalka-advokat.ua",
+    canonical: "https://advokatnagalka.com.ua",
     languages: {
-      "uk-UA": "https://nagalka-advokat.ua/uk",
-      "en-US": "https://nagalka-advokat.ua/en",
+      "uk-UA": "https://advokatnagalka.com.ua/uk",
+      "en-US": "https://advokatnagalka.com.ua/en",
     },
   },
 };
