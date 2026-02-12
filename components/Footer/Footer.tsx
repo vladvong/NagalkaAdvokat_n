@@ -19,18 +19,20 @@ function Footer() {
           </div>
           <div className="footer__contacts">
             <h4 className="footer__heading">{t('footer.contacts_heading')}</h4>
-            <div className="footer__contact-item">
-              <h5>{t('footer.address_label')}</h5>
-              <p>{t('footer.address')}</p>
-            </div>
-            <div className="footer__contact-item">
-              <h5>{t('footer.email_label')}</h5>
-              <p>{t('footer.email')}</p>
-            </div>
-            <div className="footer__contact-item">
-              <h5>{t('footer.phone_label')}</h5>
-              <p>{t('footer.phone')}</p>
-            </div>
+            <address className="footer__contact-list">
+              <div className="footer__contact-item">
+                <h5>{t('footer.address_label')}</h5>
+                <p>{t('footer.address')}</p>
+              </div>
+              <div className="footer__contact-item">
+                <h5>{t('footer.email_label')}</h5>
+                <p>{t('footer.email')}</p>
+              </div>
+              <div className="footer__contact-item">
+                <h5>{t('footer.phone_label')}</h5>
+                <p>{t('footer.phone')}</p>
+              </div>
+            </address>
           </div>
           <div className="footer__social">
             <h4 className="footer__heading">{t('footer.social_heading')}</h4>

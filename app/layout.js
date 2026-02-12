@@ -18,41 +18,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Nagalka Advokat | Адвокатська контора - послуги в рекламному праві",
-  description: "Nagalka Advokat - спеціалізована адвокатська контора з питань рекламного права. Консультації, представництво у судах, договірна практика.",
-  keywords: "адвокатська контора, рекламне право, юридичні послуги, консультації, Nagalka",
-  authors: [{ name: "Nagalka Advokat" }],
+  title: "Ярослав Нагалка - Адвокат Київ | Захист бізнесу та фізичних осіб",
+  description: "Ярослав Нагалка - адвокат у Києві з 8+ роками досвіду. Захищаю інтереси бізнесу та фізичних осіб у судах, переговорах та адміністративних процедурах. Спори, кримінальні справи, податкові перевірки.",
+  keywords: "Ярослав Нагалка адвокат, адвокат Київ, захист бізнесу, судові спори, кримінальні провадження, податкові консультації, юридичні послуги Київ",
+  authors: [{ name: "Ярослав Нагалка" }],
   openGraph: {
     type: "website",
     locale: "uk_UA",
     url: "https://nagalka-advokat.ua",
-    title: "Nagalka Advokat | Адвокатська контора",
-    description: "Професійні юридичні послуги у сфері рекламного права",
-    siteName: "Nagalka Advokat",
+    title: "Ярослав Нагалка - Адвокат у Києві | Захист інтересів бізнесу",
+    description: "Понад 8 років досвіду в захисті бізнесу та фізичних осіб. Судові спори, кримінальні провадження, податкові перевірки. Комплексні рішення для зменшення ризиків.",
+    siteName: "Ярослав Нагалка Адвокат",
     images: [
       {
         url: "https://nagalka-advokat.ua/assets/images/Hover-image.webp",
         width: 1200,
         height: 630,
-        alt: "Nagalka Advokat",
+        alt: "Ярослав Нагалка - Адвокат у Києві",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nagalka Advokat",
-    description: "Адвокатська контора - послуги в рекламному праві",
+    title: "Ярослав Нагалка - Адвокат Київ",
+    description: "Адвокат у Києві з досвідом 8+ років. Захист бізнесу та фізичних осіб у судах, переговорах та адміністративних процедурах.",
     creator: "@nagalkaadvokat",
   },
   robots: "index, follow",
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    shortcut: ["/favicon.ico"],
-    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
+    icon: "/icon.svg",
   },
   alternates: {
     canonical: "https://nagalka-advokat.ua",

@@ -44,8 +44,7 @@ export default function Header() {
     };
 
     return (
-        <div>
-            <header className={`header ${isHidden ? 'header--hidden' : ''}`}>
+        <header className={`header ${isHidden ? 'header--hidden' : ''}`}>
                 <div className="container">
                     <div className='header__wrapper'>
                         <div className="header__logo">
@@ -112,6 +111,5 @@ export default function Header() {
                     </div>
                 </div>
             </header>
-        </div>
     );
 }

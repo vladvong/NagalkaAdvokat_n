@@ -320,7 +320,7 @@ export default function Home() {
     return (
         <main>
             <Preloader isVisible={!isLoaded} />
-            <div className="hero" role="region" aria-label="Головний екран">
+            <section className="hero" aria-label="Головний екран">
                 <div className="container hero__container">
                     <div className="hero__overlay">
                         <div className="hero__text">
@@ -348,7 +348,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
             
             <div className="stats-mobile">
                 <div className="container">
@@ -377,7 +377,7 @@ export default function Home() {
                 </div>
             </div>
             
-            <div className="about" id="about" role="region" aria-label="Про мене">
+            <section className="about" id="about" aria-label="Про мене">
                 <div className="container">
                     <div className="about_wrapper">
                         <div className="about_image">
@@ -419,9 +419,9 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div className="competencies_wrapper" id="competencies" role="region" aria-label="Компетенції">
+            <section className="competencies_wrapper" id="competencies" aria-label="Компетенції">
                 <div className="container">
                     <div className="competencies_text">
                         <h2>{t('home.competencies_title')}</h2>
@@ -453,8 +453,8 @@ export default function Home() {
                     )}
                     </div>
                 </div>
-            </div>
-            <div className="project" id="projects" role="region" aria-label="Проєкти">
+            </section>
+            <section className="project" id="projects" aria-label="Проєкти">
                 <div className="container">
                     <div className="project_wrapper">
                         <div className="project_text feature-block">
@@ -466,8 +466,8 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="reviews" role="region" aria-label="Відгуки клієнтів">
+            </section>
+            <section className="reviews" aria-label="Відгуки клієнтів">
                 <div className="container">
                     <div className="reviews_wrapper">
                         <div className="reviews_text feature-block">
@@ -482,8 +482,8 @@ export default function Home() {
                             <NewReviewSlider reviews={allReviews} loading={reviewsLoading} />
                     </div>
                 </div>
-            </div>
-            <div className="CollaborationModel" role="region" aria-label="Модель співпраці">
+            </section>
+            <section className="CollaborationModel" aria-label="Модель співпраці">
                 <div className="container">
                     <div className="CollaborationModel_text feature-block">
                         <h2 className="feature-block__title">{t('home.collaboration_title')}</h2>
@@ -519,9 +519,9 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div className="kontakts" id="kontakt" role="region" aria-label="Контакти">
+            <section className="kontakts" id="kontakt" aria-label="Контакти">
                 <div className="container">
                     <div className="kontakts_wrapper_text feature-block">
                         <h2 className="feature-block__title">{t('contact.title')}</h2>
@@ -557,7 +557,7 @@ export default function Home() {
                         <div className="kontakts_wrapper_map" id="map-container">
                             {showMap ? (
                                 <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5082.2207529704265!2d30.520899200000006!3d50.4390447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cefe5aff722d%3A0x6e4e8a54da9e7e78!2z0LLRg9C70LjRhtGPINCo0L7RgtCwINCg0YPRgdGC0LDQstC10LvRliwgMTEsINCa0LjRl9CyLCDQo9C60YDQsNGX0L3QsCwgMDIwMDA!5e0!3m2!1suk!2sde!4v1770157321367!5m2!1suk!2sde"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3053.964684239391!2d30.520899200000006!3d50.4390447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cfb2f78f081b%3A0xc8a631e5a0c305b8!2z0JDQtNCy0L7QutCw0YIg0J3QsNCz0LDQu9C60LAg0K_RgNC-0YHQu9Cw0LI!5e1!3m2!1suk!2sde!4v1770854516380!5m2!1suk!2sde"
                                     loading="lazy" 
                                     referrerPolicy="no-referrer-when-downgrade"
                                     style={{ border: 0, width: '100%', height: '100%' }}
@@ -599,7 +599,7 @@ export default function Home() {
                         </form>
                     </div>
                 </div>
-            </div >
+            </section >
         </main >
     );
 };

@@ -120,7 +120,7 @@ export default function ProjectsPage() {
 
         {projects.length > 0 ? (
           <>
-            <div className="projects-grid">
+            <section className="projects-grid">
               {projects.map((project) => {
                 const title = project.title ?? project.attributes?.title ?? 'Проєкт';
                 const subtitle = project.subtitle ?? project.attributes?.subtitle ?? '';
@@ -164,7 +164,7 @@ export default function ProjectsPage() {
                   </div>
                 );
               })}
-            </div>
+            </section>
 
             <div className="projects_pagination" role="navigation" aria-label="Пагінація проєктів">
               <button
