@@ -556,14 +556,7 @@ export default function Home() {
                         </div>
                         <div className="kontakts_wrapper_map" id="map-container">
                             {showMap ? (
-                                <iframe 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3053.964684239391!2d30.520899200000006!3d50.4390447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cfb2f78f081b%3A0xc8a631e5a0c305b8!2z0JDQtNCy0L7QutCw0YIg0J3QsNCz0LDQu9C60LAg0K_RgNC-0YHQu9Cw0LI!5e1!3m2!1suk!2sde!4v1770854516380!5m2!1suk!2sde"
-                                    loading="lazy" 
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                    style={{ border: 0, width: '100%', height: '100%' }}
-                                    allowFullScreen
-                                    title="Google Maps"
-                                />
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3053.964684239391!2d30.520899200000006!3d50.4390447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cfb2f78f081b%3A0xc8a631e5a0c305b8!2z0JDQtNCy0L7QutCw0YIg0J3QsNCz0LDQu9C60LAg0K_RgNC-0YHQu9Cw0LI!5e1!3m2!1suk!2sde!4v1770854516380!5m2!1suk!2sde" width="600" height="450" style={{border: 0}} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
                             ) : (
                                 <button className="map-placeholder" onClick={() => setShowMap(true)}>
                                     Завантажити карту
