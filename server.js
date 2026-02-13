@@ -6,7 +6,7 @@ const next = require('next');
 const path = require('path');
 
 const dev = process.env.NODE_ENV !== 'production';
-const hostname = process.env.HOSTNAME || 'localhost';
+const hostname = '127.0.0.1';
 const port = parseInt(process.env.PORT || '3000', 10);
 
 // Создаем Next.js приложение
@@ -23,7 +23,7 @@ app.prepare().then(() => {
       res.statusCode = 500;
       res.end('Internal server error');
     }
-  }).listen(port, (err) => {
+  }).listen(port, hostname, (err) => {
     if (err) throw err;
     console.log(`✅ Ready on http://${hostname}:${port}`);
   });
